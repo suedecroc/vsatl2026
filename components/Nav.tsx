@@ -11,6 +11,17 @@ const tabs = [
   { href: "/after-hours", label: "After Hours" },
 ];
 
+const tickerItems = [
+  "atlanna, behave. actually don't.",
+  "eastside first.",
+  "this is not a tourist trip.",
+  "world of coca-cola. magic city. in that order.",
+  "grown & sexy. always.",
+  "lemon pepper wet is a lifestyle.",
+  "ratchetry, but premium.",
+  "bad ideas, good outfits.",
+];
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -54,7 +65,7 @@ export default function Nav() {
                 >
                   {tab.label}
                   {active && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-neon-pink shadow-[0_0_6px_rgba(255,45,123,0.9)]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-neon-pink shadow-[0_0_6px_rgba(122,28,46,0.6)]" />
                   )}
                 </Link>
               );
@@ -79,6 +90,20 @@ export default function Nav() {
 
         </div>
       </nav>
+
+      {/* Burgundy ticker — sits below nav */}
+      <div className="fixed top-14 left-0 right-0 z-40 bg-sweat/90 backdrop-blur-sm border-b border-cream/5 h-7 overflow-hidden flex items-center">
+        <div className="ticker-track" style={{ animationDuration: "40s" }}>
+          {[...tickerItems, ...tickerItems].map((item, i) => (
+            <span key={i} className="flex items-center shrink-0">
+              <span className="font-[family-name:var(--font-heading)] text-[9px] tracking-[0.2em] text-cream/30 uppercase whitespace-nowrap">
+                {item}
+              </span>
+              <span className="text-neon-pink/50 mx-4 text-[10px]">·</span>
+            </span>
+          ))}
+        </div>
+      </div>
 
       {/* Mobile full-screen menu */}
       {open && (

@@ -35,7 +35,7 @@ export default function PlaceCard({
           glow
             ? "glow-border bg-sweat/80"
             : dark
-              ? "border border-cream/8 bg-charcoal/40 hover:border-neon-pink/20 hover:shadow-[0_0_15px_rgba(255,45,123,0.08)]"
+              ? "border border-cream/8 bg-charcoal/40 hover:border-neon-pink/20 hover:shadow-[0_0_15px_rgba(122,28,46,0.08)]"
               : "border border-midnight/10 bg-cream/80 hover:border-midnight/20"
         }`}
       >

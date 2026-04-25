@@ -259,6 +259,18 @@ export default function NightlifePage() {
         </div>
       </section>
 
+      {/* ===== PHOTOBOOTH BREAK ===== */}
+      <div className="px-6 lg:px-12 py-8">
+        <div className="max-w-7xl mx-auto">
+          <PhotoCard
+            src="/photos/suede-photobooth.png"
+            alt="Suede laughing in a film-burn photobooth"
+            variant="inline"
+            caption="before the night did what it did"
+          />
+        </div>
+      </div>
+
       {/* ===== 02 — THE BIG ROOMS ===== */}
       <section className="py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto space-y-12">
@@ -271,6 +283,20 @@ export default function NightlifePage() {
             {bigNightSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
             ))}
+          </div>
+          <PhotoCard
+            src="/photos/jake-cash.jpeg"
+            alt="Versace Slippers fanning cash -- blue shades, full energy"
+            variant="chaos"
+            caption="bring ones. and more ones."
+          />
+          <div className="text-center">
+            <PhotoCard
+              src="/photos/meme-dafoe.png"
+              alt="Willem Dafoe -- dress accordingly"
+              variant="meme"
+              caption="dress accordingly."
+            />
           </div>
           <PhotoCard
             src="/photos/versace-neon-sign.jpg"
@@ -378,6 +404,7 @@ export default function NightlifePage() {
       <ChapterNav
         prev={{ href: "/golden-hour", label: "Golden Hour" }}
         next={{ href: "/after-hours", label: "After Hours" }}
+        bridge="you stayed. now the real atlanna begins."
       />
       <FooterFrame />
     </main>

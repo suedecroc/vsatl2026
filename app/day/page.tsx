@@ -322,8 +322,8 @@ export default function DayPage() {
           <div className="px-6 lg:px-12 pb-12">
             <div className="max-w-7xl mx-auto">
               <PhotoCard
-                src="/photos/jordan-moodboard.jpg"
-                alt="Jordan moodboard -- bucket hat edition"
+                src="/photos/suede-vibe.jpeg"
+                alt="Suede -- Tyler jacket, string lights, full vibe"
                 variant="chaos"
                 caption="mood: set"
                 priority
@@ -420,6 +420,18 @@ export default function DayPage() {
               <PlaceCard key={spot.name} {...spot} delay={i * 80} tagVariant="warm" />
             ))}
           </div>
+          <PhotoCard
+            src="/photos/jake-coke.jpeg"
+            alt="Jake at the World of Coca-Cola -- vest and everything"
+            variant="inline"
+            caption="the man on the inside"
+          />
+          <PhotoCard
+            src="/photos/suede-boat.jpeg"
+            alt="Suede on the water -- Caribbean energy"
+            variant="chaos"
+            caption="water break"
+          />
         </div>
       </section>
 
@@ -494,6 +506,7 @@ export default function DayPage() {
 
       <ChapterNav
         next={{ href: "/golden-hour", label: "Golden Hour" }}
+        bridge="you ate well. atlanna shifts gears at 4pm."
       />
       <FooterFrame />
     </main>

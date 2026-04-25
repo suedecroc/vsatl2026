@@ -146,6 +146,12 @@ export default function GoldenHourPage() {
               <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
             ))}
           </div>
+          <PhotoCard
+            src="/photos/suede-cigar.jpeg"
+            alt="Suede with a cigar, Ali poster on the wall behind"
+            variant="chaos"
+            caption="the golden hour posture"
+          />
         </div>
       </section>
 
@@ -227,6 +233,7 @@ export default function GoldenHourPage() {
       <ChapterNav
         prev={{ href: "/day", label: "Day" }}
         next={{ href: "/nightlife", label: "Nightlife" }}
+        bridge="the city doesn't sleep. neither do you."
       />
       <FooterFrame />
     </main>

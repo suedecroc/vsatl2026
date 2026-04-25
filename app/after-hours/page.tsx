@@ -152,6 +152,12 @@ export default function AfterHoursPage() {
             title="Feed the Chaos"
             intro="the restaurants closed hours ago. the real food map opens now. waffle house. wings. somebody's trunk. this is where the stories come from."
           />
+          <PhotoCard
+            src="/photos/meme-wine.jpg"
+            alt="B&W man with wine -- the vibe"
+            variant="meme"
+            caption="the situation"
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {lateNightFood.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
@@ -204,6 +210,17 @@ export default function AfterHoursPage() {
           </div>
         </div>
       </section>
+
+      <div className="px-6 lg:px-12 py-8">
+        <div className="max-w-7xl mx-auto">
+          <PhotoCard
+            src="/photos/meme-boot.jpeg"
+            alt="Snapchat pimp down moment"
+            variant="meme"
+            caption="pimp down! pimp down...."
+          />
+        </div>
+      </div>
 
       <QuoteBlock
         text="this is fine"

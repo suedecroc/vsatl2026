@@ -4,33 +4,33 @@ import MotionWrapper from "./MotionWrapper";
 interface ChapterNavProps {
   prev?: { href: string; label: string };
   next?: { href: string; label: string };
+  bridge?: string;
 }
 
-export default function ChapterNav({ prev, next }: ChapterNavProps) {
+export default function ChapterNav({ prev, next, bridge }: ChapterNavProps) {
   return (
-    <section className="bg-sweat grain py-28 sm:py-36 px-6 lg:px-12 text-center relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-pink/3 to-transparent pointer-events-none" />
-      <MotionWrapper>
-        <div className="relative z-10 max-w-3xl mx-auto">
+    <section className="bg-sweat grain py-20 sm:py-28 px-6 lg:px-12 relative overflow-hidden">
+      <div className="max-w-3xl mx-auto">
+        <MotionWrapper>
+          {bridge && (
+            <p className="section-outro mb-10">{bridge}</p>
+          )}
           {next ? (
-            <>
-              <p className="font-[family-name:var(--font-heading)] text-[10px] tracking-[0.4em] text-cream/20 uppercase mb-6">
-                Next Chapter
-              </p>
-              <Link href={next.href} className="group block">
-                <h2 className="font-[family-name:var(--font-display)] text-[clamp(3rem,12vw,8rem)] leading-[0.9] text-neon-pink neon-glow-pink uppercase tracking-tight group-hover:text-cream transition-colors duration-500">
-                  {next.label}
-                </h2>
-              </Link>
-              <div className="mt-8 w-8 h-px bg-neon-pink/40 mx-auto" />
-            </>
+            <Link href={next.href} className="group flex items-center gap-4">
+              <span className="font-[family-name:var(--font-heading)] text-[10px] tracking-[0.3em] text-cream/25 uppercase">
+                next →
+              </span>
+              <span className="font-[family-name:var(--font-display)] text-xl sm:text-2xl tracking-wide text-cream/40 group-hover:text-cream transition-colors duration-300 uppercase">
+                {next.label}
+              </span>
+            </Link>
           ) : (
-            <p className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,4rem)] leading-[0.9] text-cream/20 uppercase">
+            <p className="font-[family-name:var(--font-display)] text-xl text-cream/20 uppercase">
               that&apos;s a wrap.
             </p>
           )}
-        </div>
-      </MotionWrapper>
+        </MotionWrapper>
+      </div>
       {prev && (
         <MotionWrapper delay={200}>
           <p className="relative z-10 font-[family-name:var(--font-heading)] text-[10px] tracking-[0.3em] text-cream/15 uppercase mt-10">
