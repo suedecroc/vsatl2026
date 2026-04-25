@@ -437,40 +437,46 @@ export default function DayPage() {
 
       {/* ===== 03 — ITINERARY ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto">
           <MotionWrapper>
-            <div className="max-w-3xl mx-auto">
-              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-dirty-orange neon-glow-subtle">
-                03 — The Plan
-              </p>
-              <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
-                Day by Day
-              </h2>
-              <p className="font-[family-name:var(--font-body)] text-base sm:text-lg mt-6 leading-relaxed max-w-2xl text-cream/60">
-                the daytime itinerary. flexible by design, intentional by nature. adjust as needed. atlanta rewards spontaneity.
-              </p>
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 items-end">
+              <div className="lg:col-span-5">
+                <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-dirty-orange neon-glow-subtle">
+                  03 — The Plan
+                </p>
+                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
+                  Day by Day
+                </h2>
+              </div>
+              <div className="lg:col-span-7 lg:pb-3">
+                <p className="font-[family-name:var(--font-body)] text-base sm:text-lg leading-relaxed text-cream/60">
+                  the daytime itinerary. flexible by design, intentional by nature. adjust as needed. atlanta rewards spontaneity.
+                </p>
+              </div>
             </div>
           </MotionWrapper>
-          <div className="max-w-5xl mx-auto space-y-16">
+          <div className="space-y-20">
             {dayItinerary.map((day, dayIdx) => (
               <MotionWrapper key={day.day}>
-                <div className="border-l-2 border-dirty-orange/20 pl-6 sm:pl-8">
-                  <div className="inline-block mb-4">
-                    <span
-                      className={`
-                        inline-block px-4 py-1.5
-                        font-[family-name:var(--font-display)] text-sm tracking-widest uppercase
-                        bg-dirty-orange text-midnight -skew-x-3
-                        ${dayIdx % 2 === 0 ? "rotate-chaos-1" : "rotate-chaos-2"}
-                      `}
-                    >
-                      <span className="skew-x-3 inline-block">{day.day}</span>
-                    </span>
+                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                  <div className="lg:col-span-4 lg:border-l-2 lg:border-dirty-orange/20 lg:pl-8 border-l-2 border-dirty-orange/20 pl-6">
+                    <div className="inline-block mb-4">
+                      <span
+                        className={`
+                          inline-block px-4 py-1.5
+                          font-[family-name:var(--font-display)] text-sm tracking-widest uppercase
+                          bg-dirty-orange text-midnight -skew-x-3
+                          ${dayIdx % 2 === 0 ? "rotate-chaos-1" : "rotate-chaos-2"}
+                        `}
+                      >
+                        <span className="skew-x-3 inline-block">{day.day}</span>
+                      </span>
+                    </div>
+                    <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl text-cream uppercase tracking-wide neon-glow-orange">
+                      {day.title}
+                    </h3>
                   </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl text-cream uppercase tracking-wide mb-6 neon-glow-orange">
-                    {day.title}
-                  </h3>
-                  <div className="space-y-6">
+                  <div className="lg:col-span-8 space-y-6">
                     {day.events.map((event) => (
                       <div key={`${day.day}-${event.time}`} className="flex gap-4">
                         <span className="font-[family-name:var(--font-heading)] text-xs text-dirty-orange/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">

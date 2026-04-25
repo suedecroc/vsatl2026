@@ -190,38 +190,50 @@ export default function GoldenHourPage() {
 
       {/* ===== 03 — THE FLOW ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto">
           <MotionWrapper>
-            <div className="max-w-3xl mx-auto">
-              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-dirty-orange neon-glow-subtle">
-                03 — The Flow
-              </p>
-              <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
-                How the Evening Builds
-              </h2>
-              <p className="font-[family-name:var(--font-body)] text-base sm:text-lg mt-6 leading-relaxed max-w-2xl text-cream/60">
-                golden hour has a rhythm. you don't force it. you let it carry you from rooftop to beltline to patio to dinner. the city does the work.
-              </p>
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 items-end">
+              <div className="lg:col-span-5">
+                <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-dirty-orange neon-glow-subtle">
+                  03 — The Flow
+                </p>
+                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
+                  How the Evening Builds
+                </h2>
+              </div>
+              <div className="lg:col-span-7 lg:pb-3">
+                <p className="font-[family-name:var(--font-body)] text-base sm:text-lg leading-relaxed text-cream/60">
+                  golden hour has a rhythm. you don&apos;t force it. you let it carry you from rooftop to beltline to patio to dinner. the city does the work.
+                </p>
+              </div>
             </div>
           </MotionWrapper>
-          <div className="max-w-4xl mx-auto">
-            {goldenItinerary.map((event, i) => (
-              <MotionWrapper key={event.time} delay={i * 80}>
-                <div className="flex gap-4 mb-8 last:mb-0">
-                  <span className="font-[family-name:var(--font-heading)] text-xs text-sunburnt-yellow/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
-                    {event.time}
-                  </span>
-                  <div>
-                    <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                      {event.spot}
-                    </p>
-                    <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
-                      {event.desc}
-                    </p>
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="lg:col-span-4 lg:border-l-2 lg:border-dirty-orange/20 lg:pl-8 hidden lg:block">
+              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-dirty-orange/60 uppercase mb-3">timeline</p>
+              <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm leading-relaxed">
+                five hours, five moves. each one a different temperature.
+              </p>
+            </div>
+            <div className="lg:col-span-8 space-y-6">
+              {goldenItinerary.map((event, i) => (
+                <MotionWrapper key={event.time} delay={i * 80}>
+                  <div className="flex gap-4">
+                    <span className="font-[family-name:var(--font-heading)] text-xs text-sunburnt-yellow/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
+                      {event.time}
+                    </span>
+                    <div>
+                      <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
+                        {event.spot}
+                      </p>
+                      <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
+                        {event.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </MotionWrapper>
-            ))}
+                </MotionWrapper>
+              ))}
+            </div>
           </div>
         </div>
       </section>

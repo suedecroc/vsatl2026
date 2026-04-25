@@ -175,38 +175,50 @@ export default function AfterHoursPage() {
 
       {/* ===== 02 — THE REAL SCHEDULE ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
+        <div className="max-w-7xl mx-auto">
           <MotionWrapper>
-            <div className="max-w-3xl mx-auto">
-              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-club-purple neon-glow-subtle">
-                02 — The Real Schedule
-              </p>
-              <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
-                How the Night Actually Goes
-              </h2>
-              <p className="font-[family-name:var(--font-body)] text-base sm:text-lg mt-6 leading-relaxed max-w-2xl text-cream/60">
-                nobody follows the itinerary after midnight. here&apos;s what actually happens.
-              </p>
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 items-end">
+              <div className="lg:col-span-5">
+                <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-club-purple neon-glow-subtle">
+                  02 — The Real Schedule
+                </p>
+                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
+                  How the Night Actually Goes
+                </h2>
+              </div>
+              <div className="lg:col-span-7 lg:pb-3">
+                <p className="font-[family-name:var(--font-body)] text-base sm:text-lg leading-relaxed text-cream/60">
+                  nobody follows the itinerary after midnight. here&apos;s what actually happens.
+                </p>
+              </div>
             </div>
           </MotionWrapper>
-          <div className="max-w-4xl mx-auto">
-            {chaosTimeline.map((event, i) => (
-              <MotionWrapper key={event.time} delay={i * 80}>
-                <div className="flex gap-4 mb-8 last:mb-0">
-                  <span className="font-[family-name:var(--font-heading)] text-xs text-club-purple/60 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
-                    {event.time}
-                  </span>
-                  <div>
-                    <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                      {event.spot}
-                    </p>
-                    <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
-                      {event.desc}
-                    </p>
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="lg:col-span-4 lg:border-l-2 lg:border-club-purple/20 lg:pl-8 hidden lg:block">
+              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-club-purple/60 uppercase mb-3">the descent</p>
+              <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm leading-relaxed">
+                midnight to noon. the chapters between the official ones.
+              </p>
+            </div>
+            <div className="lg:col-span-8 space-y-6">
+              {chaosTimeline.map((event, i) => (
+                <MotionWrapper key={event.time} delay={i * 80}>
+                  <div className="flex gap-4">
+                    <span className="font-[family-name:var(--font-heading)] text-xs text-club-purple/60 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
+                      {event.time}
+                    </span>
+                    <div>
+                      <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
+                        {event.spot}
+                      </p>
+                      <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
+                        {event.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </MotionWrapper>
-            ))}
+                </MotionWrapper>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -236,36 +248,44 @@ export default function AfterHoursPage() {
       </MotionWrapper>
 
       {/* ===== 03 — VICTORY LAP ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="03 — The Last Day"
-            title="Victory Lap"
-            intro="saturday. you made it. everything hurts but nothing is broken. time to eat brunch like you earned it, because you did."
-          />
-          <div className="max-w-4xl mx-auto">
-            {saturdayWindDown.map((event, i) => (
-              <MotionWrapper key={event.time} delay={i * 80}>
-                <div className="flex gap-4 mb-8 last:mb-0">
-                  <span className="font-[family-name:var(--font-heading)] text-xs text-club-purple/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
-                    {event.time}
-                  </span>
-                  <div>
-                    <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                      {event.spot}
-                    </p>
-                    {event.address && (
-                      <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5">
-                        {event.address}
+      <ChapterIntro
+        eyebrow="03 — The Last Day"
+        title="Victory Lap"
+        intro="saturday. you made it. everything hurts but nothing is broken. time to eat brunch like you earned it, because you did."
+      />
+      <section className="pb-24 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+            <div className="lg:col-span-4 lg:border-l-2 lg:border-club-purple/20 lg:pl-8 hidden lg:block">
+              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-club-purple/60 uppercase mb-3">the wind-down</p>
+              <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm leading-relaxed">
+                last brunch. last walk. last airport curb. earn every minute.
+              </p>
+            </div>
+            <div className="lg:col-span-8 space-y-6">
+              {saturdayWindDown.map((event, i) => (
+                <MotionWrapper key={event.time} delay={i * 80}>
+                  <div className="flex gap-4">
+                    <span className="font-[family-name:var(--font-heading)] text-xs text-club-purple/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
+                      {event.time}
+                    </span>
+                    <div>
+                      <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
+                        {event.spot}
                       </p>
-                    )}
-                    <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
-                      {event.desc}
-                    </p>
+                      {event.address && (
+                        <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5">
+                          {event.address}
+                        </p>
+                      )}
+                      <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
+                        {event.desc}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </MotionWrapper>
-            ))}
+                </MotionWrapper>
+              ))}
+            </div>
           </div>
         </div>
       </section>
