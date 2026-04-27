@@ -134,69 +134,74 @@ export default function GoldenHourPage() {
       </AmbientMediaLayer>
 
       {/* ===== 01 — THE SHIFT ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="01 — The Shift"
-            title="When the Light Changes"
-            intro="atlanta at golden hour is a different city. the concrete goes warm. the trees cast long shadows on the beltline. every patio becomes the right patio."
-            variant="warm"
-          />
+      <ChapterIntro
+        eyebrow="01 — The Shift"
+        title="When the Light Changes"
+        intro="atlanta at golden hour is a different city. the concrete goes warm. the trees cast long shadows on the beltline. every patio becomes the right patio."
+        variant="warm"
+      />
+
+      <section className="py-12 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {sunsetSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
             ))}
           </div>
-          <PhotoBleed
-            variant="accent"
-            src="/photos/suede-cigar.jpeg"
-            alt="Suede with a cigar, Ali poster on the wall behind"
-            tint="gold"
-            objectPosition="center 35%"
-            captionEyebrow="the posture"
-            caption="the golden hour posture."
-          />
         </div>
       </section>
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/suede-cigar.jpeg"
+        alt="Suede with a cigar, Ali poster on the wall behind"
+        tint="gold"
+        objectPosition="center 35%"
+        captionEyebrow="the posture"
+        caption="the golden hour posture."
+      />
 
       <QuoteBlock
         text="you're driving through midtown and the light hits the glass buildings and for a second the whole city looks like it was designed for exactly this moment"
       />
 
       {/* ===== 02 — THE BRIDGE ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="02 — The Bridge"
-            title="Between Day & Night"
-            intro="these are the spots where afternoon becomes evening. you came in daylight. you'll leave in dark. that's the whole trick."
-            variant="warm"
-          />
-          <PhotoBleed
-            variant="accent"
-            src="/photos/versace-sunglasses.jpg"
-            alt="Versace with blue mirror shades at golden hour"
-            tint="gold"
-            objectPosition="center 30%"
-            captionEyebrow="golden hour"
-            caption="golden hour approved."
-          />
+      <ChapterIntro
+        eyebrow="02 — The Bridge"
+        title="Between Day & Night"
+        intro="these are the spots where afternoon becomes evening. you came in daylight. you'll leave in dark. that's the whole trick."
+        variant="warm"
+      />
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/versace-sunglasses.jpg"
+        alt="Versace with blue mirror shades at golden hour"
+        tint="gold"
+        objectPosition="center 30%"
+        captionEyebrow="golden hour"
+        caption="golden hour approved."
+      />
+
+      <section className="py-12 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {transitionSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
             ))}
           </div>
-          <PhotoBleed
-            variant="accent"
-            src="/photos/versace-bathroom-fit.jpg"
-            alt="Versace bathroom fit -- mirror selfie"
-            tint="gold"
-            objectPosition="center top"
-            captionEyebrow="fit check"
-            caption="golden hour edition."
-          />
         </div>
       </section>
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/versace-bathroom-fit.jpg"
+        alt="Versace bathroom fit -- mirror selfie"
+        tint="gold"
+        objectPosition="center top"
+        captionEyebrow="fit check"
+        caption="golden hour edition."
+      />
 
       {/* ===== 03 — THE FLOW ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">

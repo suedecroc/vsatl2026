@@ -25,8 +25,6 @@ interface PhotoBleedProps {
   // Accent only
   caption?: string;
   captionEyebrow?: string;
-  /** Renders as edge-to-edge — pulls out of parent container padding. Default true. */
-  fullBleed?: boolean;
 }
 
 const tintClass = (tint: Tint, variant: "hero" | "accent") => {
@@ -49,18 +47,13 @@ export default function PhotoBleed({
   intro,
   caption,
   captionEyebrow,
-  fullBleed = true,
 }: PhotoBleedProps) {
   const minH =
     variant === "hero" ? "min-h-[85vh]" : "min-h-[55vh] sm:min-h-[60vh]";
-  // Break out of any parent max-width + padding by spanning full viewport width
-  const breakout = fullBleed
-    ? "relative left-1/2 right-1/2 -translate-x-1/2 w-screen"
-    : "";
 
   return (
     <section
-      className={`relative ${minH} ${breakout} overflow-hidden grain flex items-end`}
+      className={`relative ${minH} w-full overflow-hidden grain flex items-end`}
     >
       {/* Photo */}
       {/* eslint-disable-next-line @next/next/no-img-element */}

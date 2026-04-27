@@ -140,6 +140,7 @@ const lateDinnerSpots = [
 const nightItinerary = [
   {
     day: "TUESDAY NIGHT",
+    date: "APR 29",
     title: "The Warm-Up",
     events: [
       {
@@ -157,6 +158,7 @@ const nightItinerary = [
   },
   {
     day: "WEDNESDAY NIGHT",
+    date: "APR 30",
     title: "Magic City",
     events: [
       {
@@ -174,6 +176,7 @@ const nightItinerary = [
   },
   {
     day: "THURSDAY NIGHT",
+    date: "MAY 01",
     title: "East Side Crawl",
     events: [
       {
@@ -192,6 +195,7 @@ const nightItinerary = [
   },
   {
     day: "FRIDAY NIGHT",
+    date: "MAY 02",
     title: "The Big One",
     events: [
       {
@@ -225,7 +229,6 @@ export default function NightlifePage() {
         eyebrow="Chapter Three"
         title="Nightlife"
         intro="the neon comes on and the city changes its mind about everything. edgewood avenue is a decision tree with no wrong answers. buckhead is where the volume goes up. magic city doesn't need your introduction."
-        fullBleed={false}
       />
 
       <QuoteBlock
@@ -263,27 +266,34 @@ export default function NightlifePage() {
       />
 
       {/* ===== 02 — THE BIG ROOMS ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="02 — Main Event"
-            title="The Big Rooms"
-            intro="magic city is the non-negotiable. the rest depends on what kind of night you're building. buckhead goes loud. midtown goes louder. you already know which one you're choosing."
-          />
+      <ChapterIntro
+        eyebrow="02 — Main Event"
+        title="The Big Rooms"
+        intro="magic city is the non-negotiable. the rest depends on what kind of night you're building. buckhead goes loud. midtown goes louder. you already know which one you're choosing."
+      />
+
+      <section className="py-12 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {bigNightSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
             ))}
           </div>
-          <PhotoBleed
-            variant="accent"
-            src="/photos/jake-cash.jpeg"
-            alt="Versace Slippers fanning cash -- blue shades, full energy"
-            tint="burgundy"
-            objectPosition="center 25%"
-            captionEyebrow="the strategy"
-            caption="bring ones. and more ones."
-          />
+        </div>
+      </section>
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/jake-cash.jpeg"
+        alt="Versace Slippers fanning cash -- blue shades, full energy"
+        tint="burgundy"
+        objectPosition="center 25%"
+        captionEyebrow="the strategy"
+        caption="bring ones. and more ones."
+      />
+
+      <section className="py-12 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <PhotoCard
               src="/photos/meme-dafoe.png"
@@ -292,21 +302,25 @@ export default function NightlifePage() {
               caption="dress accordingly."
             />
           </div>
-          <PhotoBleed
-            variant="accent"
-            src="/photos/versace-neon-sign.jpg"
-            alt="Versace next to BABE YOU LOOK SO COOL neon sign"
-            tint="burgundy"
-            objectPosition="center 40%"
-            captionEyebrow="signs from the universe"
-            caption="babe you look so cool."
-          />
-          <MotionWrapper delay={200}>
-            <div className="flex justify-center">
-              <StickerButton label="Find Your Trouble" href="#night-plan" color="purple" />
-            </div>
-          </MotionWrapper>
         </div>
+      </section>
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/versace-neon-sign.jpg"
+        alt="Versace next to BABE YOU LOOK SO COOL neon sign"
+        tint="burgundy"
+        objectPosition="center 40%"
+        captionEyebrow="signs from the universe"
+        caption="babe you look so cool."
+      />
+
+      <section className="py-8 px-6 lg:px-12">
+        <MotionWrapper delay={200}>
+          <div className="flex justify-center">
+            <StickerButton label="Find Your Trouble" href="#night-plan" color="purple" />
+          </div>
+        </MotionWrapper>
       </section>
 
       {/* ===== 03 — FUEL ===== */}
@@ -350,31 +364,28 @@ export default function NightlifePage() {
               </div>
             </div>
           </MotionWrapper>
-          <div className="space-y-20">
-            {nightItinerary.map((day, dayIdx) => (
+          <div className="space-y-8">
+            {nightItinerary.map((day) => (
               <MotionWrapper key={day.day}>
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-                  <div className="lg:col-span-4 lg:border-l-2 lg:border-neon-pink/20 lg:pl-8 border-l-2 border-neon-pink/20 pl-6">
-                    <div className="inline-block mb-4">
-                      <span
-                        className={`
-                          inline-block px-4 py-1.5
-                          font-[family-name:var(--font-display)] text-sm tracking-widest uppercase
-                          bg-neon-pink text-midnight -skew-x-3
-                          ${dayIdx % 2 === 0 ? "rotate-chaos-1" : "rotate-chaos-2"}
-                        `}
-                      >
-                        <span className="skew-x-3 inline-block">{day.day}</span>
-                      </span>
-                    </div>
-                    <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl text-cream uppercase tracking-wide neon-glow-pink">
+                <article className="border border-neon-pink/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 lg:p-10 hover:border-neon-pink/40 transition-colors duration-300">
+                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-6 pb-5 border-b border-cream/8">
+                    <span className="inline-block px-3 py-1 font-[family-name:var(--font-display)] text-xs tracking-widest uppercase bg-neon-pink text-midnight -skew-x-3">
+                      <span className="skew-x-3 inline-block">{day.day}</span>
+                    </span>
+                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-xs tracking-[0.25em] uppercase">
+                      {day.date}
+                    </span>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl lg:text-3xl text-cream uppercase tracking-wide ml-auto neon-glow-pink">
                       {day.title}
                     </h3>
-                  </div>
-                  <div className="lg:col-span-8 space-y-6">
+                  </header>
+                  <div className="divide-y divide-cream/5">
                     {day.events.map((event) => (
-                      <div key={`${day.day}-${event.time}`} className="flex gap-4">
-                        <span className="font-[family-name:var(--font-heading)] text-xs text-neon-pink/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
+                      <div
+                        key={`${day.day}-${event.time}`}
+                        className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-4 first:pt-0 last:pb-0"
+                      >
+                        <span className="font-[family-name:var(--font-heading)] text-xs text-neon-pink/60 tracking-[0.15em] uppercase pt-1">
                           {event.time}
                         </span>
                         <div>
@@ -382,18 +393,18 @@ export default function NightlifePage() {
                             {event.spot}
                           </p>
                           {event.address && (
-                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5">
+                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5 tracking-wide">
                               {event.address}
                             </p>
                           )}
-                          <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
+                          <p className="font-[family-name:var(--font-body)] text-cream/50 text-sm mt-1 leading-relaxed">
                             {event.desc}
                           </p>
                         </div>
                       </div>
                     ))}
                   </div>
-                </div>
+                </article>
               </MotionWrapper>
             ))}
           </div>

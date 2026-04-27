@@ -146,13 +146,14 @@ export default function AfterHoursPage() {
       />
 
       {/* ===== 01 — FEED THE CHAOS ===== */}
-      <section className="py-24 px-6 lg:px-12">
+      <ChapterIntro
+        eyebrow="01 — 3AM Menu"
+        title="Feed the Chaos"
+        intro="the restaurants closed hours ago. the real food map opens now. waffle house. wings. somebody's trunk. this is where the stories come from."
+      />
+
+      <section className="py-12 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="01 — 3AM Menu"
-            title="Feed the Chaos"
-            intro="the restaurants closed hours ago. the real food map opens now. waffle house. wings. somebody's trunk. this is where the stories come from."
-          />
           <PhotoCard
             src="/photos/meme-wine.jpg"
             alt="B&W man with wine -- the vibe"
@@ -164,17 +165,18 @@ export default function AfterHoursPage() {
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
             ))}
           </div>
-          <PhotoBleed
-            variant="accent"
-            src="/photos/versace-boot.jpg"
-            alt="Versace leg in medical boot -- pimp down moment"
-            tint="purple"
-            objectPosition="center 60%"
-            captionEyebrow="aftermath"
-            caption="pimp down! pimp down...."
-          />
         </div>
       </section>
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/versace-boot.jpg"
+        alt="Versace leg in medical boot -- pimp down moment"
+        tint="purple"
+        objectPosition="center 60%"
+        captionEyebrow="aftermath"
+        caption="pimp down! pimp down...."
+      />
 
       {/* ===== 02 — THE REAL SCHEDULE ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">

@@ -197,6 +197,7 @@ const daytimeSpots = [
 const dayItinerary = [
   {
     day: "TUESDAY",
+    date: "APR 29",
     title: "The Arrival",
     events: [
       {
@@ -220,6 +221,7 @@ const dayItinerary = [
   },
   {
     day: "WEDNESDAY",
+    date: "APR 30",
     title: "Coca-Cola Chronicles",
     events: [
       {
@@ -238,6 +240,7 @@ const dayItinerary = [
   },
   {
     day: "THURSDAY",
+    date: "MAY 01",
     title: "East Side Deep Dive",
     events: [
       {
@@ -266,6 +269,7 @@ const dayItinerary = [
   },
   {
     day: "FRIDAY",
+    date: "MAY 02",
     title: "Film Festival Flex",
     events: [
       {
@@ -288,6 +292,7 @@ const dayItinerary = [
   },
   {
     day: "SATURDAY",
+    date: "MAY 03",
     title: "Victory Lap",
     events: [
       {
@@ -321,7 +326,6 @@ export default function DayPage() {
         eyebrow="Chapter One"
         title="Day"
         intro="you land at 5. you don't check in yet. there's a wing spot that's been waiting since your flight left. the city is hot, bright, and not apologizing for it. you move through it the way you move through everything -- with intention and an appetite."
-        fullBleed={false}
       />
 
       {/* ===== 01 — FOOD ===== */}
@@ -392,48 +396,52 @@ export default function DayPage() {
       />
 
       {/* ===== 02 — EXPLORE ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="02 — Explore"
-            title="The Bright Hours"
-            intro="before the city shifts, there's this. beltline walks, rooftop views, a bookstore that changes your afternoon plans. the daytime has its own weight here."
-            variant="warm"
-          />
-          <PhotoBleed
-            variant="accent"
-            src="/photos/versace-mirror-fit.jpg"
-            alt="Versace hotel mirror fit check"
-            tint="gold"
-            objectPosition="center top"
-            captionEyebrow="fit check"
-            caption="before we step out."
-          />
+      <ChapterIntro
+        eyebrow="02 — Explore"
+        title="The Bright Hours"
+        intro="before the city shifts, there's this. beltline walks, rooftop views, a bookstore that changes your afternoon plans. the daytime has its own weight here."
+        variant="warm"
+      />
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/versace-mirror-fit.jpg"
+        alt="Versace hotel mirror fit check"
+        tint="gold"
+        objectPosition="center top"
+        captionEyebrow="fit check"
+        caption="before we step out."
+      />
+
+      <section className="py-16 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {daytimeSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} delay={i * 80} tagVariant="warm" />
             ))}
           </div>
-          <PhotoBleed
-            variant="accent"
-            src="/photos/jake-coke.jpeg"
-            alt="Jake at the World of Coca-Cola -- vest and everything"
-            tint="gold"
-            objectPosition="center 30%"
-            captionEyebrow="the inside man"
-            caption="the man on the inside."
-          />
-          <PhotoBleed
-            variant="accent"
-            src="/photos/suede-boat.jpeg"
-            alt="Suede on the water -- Caribbean energy"
-            tint="gold"
-            objectPosition="center 40%"
-            captionEyebrow="intermission"
-            caption="water break."
-          />
         </div>
       </section>
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/jake-coke.jpeg"
+        alt="Jake at the World of Coca-Cola -- vest and everything"
+        tint="gold"
+        objectPosition="center 30%"
+        captionEyebrow="the inside man"
+        caption="the man on the inside."
+      />
+
+      <PhotoBleed
+        variant="accent"
+        src="/photos/suede-boat.jpeg"
+        alt="Suede on the water -- Caribbean energy"
+        tint="gold"
+        objectPosition="center 40%"
+        captionEyebrow="intermission"
+        caption="water break."
+      />
 
       {/* ===== 03 — ITINERARY ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">
@@ -455,31 +463,28 @@ export default function DayPage() {
               </div>
             </div>
           </MotionWrapper>
-          <div className="space-y-20">
-            {dayItinerary.map((day, dayIdx) => (
+          <div className="space-y-8">
+            {dayItinerary.map((day) => (
               <MotionWrapper key={day.day}>
-                <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-                  <div className="lg:col-span-4 lg:border-l-2 lg:border-dirty-orange/20 lg:pl-8 border-l-2 border-dirty-orange/20 pl-6">
-                    <div className="inline-block mb-4">
-                      <span
-                        className={`
-                          inline-block px-4 py-1.5
-                          font-[family-name:var(--font-display)] text-sm tracking-widest uppercase
-                          bg-dirty-orange text-midnight -skew-x-3
-                          ${dayIdx % 2 === 0 ? "rotate-chaos-1" : "rotate-chaos-2"}
-                        `}
-                      >
-                        <span className="skew-x-3 inline-block">{day.day}</span>
-                      </span>
-                    </div>
-                    <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl text-cream uppercase tracking-wide neon-glow-orange">
+                <article className="border border-dirty-orange/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 lg:p-10 hover:border-dirty-orange/40 transition-colors duration-300">
+                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-6 pb-5 border-b border-cream/8">
+                    <span className="inline-block px-3 py-1 font-[family-name:var(--font-display)] text-xs tracking-widest uppercase bg-dirty-orange text-midnight -skew-x-3">
+                      <span className="skew-x-3 inline-block">{day.day}</span>
+                    </span>
+                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-xs tracking-[0.25em] uppercase">
+                      {day.date}
+                    </span>
+                    <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl lg:text-3xl text-cream uppercase tracking-wide ml-auto neon-glow-orange">
                       {day.title}
                     </h3>
-                  </div>
-                  <div className="lg:col-span-8 space-y-6">
+                  </header>
+                  <div className="divide-y divide-cream/5">
                     {day.events.map((event) => (
-                      <div key={`${day.day}-${event.time}`} className="flex gap-4">
-                        <span className="font-[family-name:var(--font-heading)] text-xs text-dirty-orange/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
+                      <div
+                        key={`${day.day}-${event.time}`}
+                        className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-4 first:pt-0 last:pb-0"
+                      >
+                        <span className="font-[family-name:var(--font-heading)] text-xs text-dirty-orange/60 tracking-[0.15em] uppercase pt-1">
                           {event.time}
                         </span>
                         <div>
@@ -487,18 +492,18 @@ export default function DayPage() {
                             {event.spot}
                           </p>
                           {event.address && (
-                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5">
+                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5 tracking-wide">
                               {event.address}
                             </p>
                           )}
-                          <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
+                          <p className="font-[family-name:var(--font-body)] text-cream/50 text-sm mt-1 leading-relaxed">
                             {event.desc}
                           </p>
                         </div>
                       </div>
                     ))}
                   </div>
-                </div>
+                </article>
               </MotionWrapper>
             ))}
           </div>
