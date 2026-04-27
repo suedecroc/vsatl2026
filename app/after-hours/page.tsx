@@ -8,6 +8,7 @@ import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
+import PhotoBleed from "@/components/PhotoBleed";
 
 const lateNightFood = [
   {
@@ -163,12 +164,14 @@ export default function AfterHoursPage() {
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
             ))}
           </div>
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/versace-boot.jpg"
             alt="Versace leg in medical boot -- pimp down moment"
-            variant="chaos"
-            overlay="Pimp down! Pimp down...."
-            caption="the after hours don't always go as planned"
+            tint="purple"
+            objectPosition="center 60%"
+            captionEyebrow="aftermath"
+            caption="pimp down! pimp down...."
           />
         </div>
       </section>

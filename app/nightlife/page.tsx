@@ -10,6 +10,7 @@ import MotionWrapper from "@/components/MotionWrapper";
 import StickerButton from "@/components/StickerButton";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
+import PhotoBleed from "@/components/PhotoBleed";
 
 const edgewoodSpots = [
   {
@@ -215,26 +216,17 @@ export default function NightlifePage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <AmbientMediaLayer gradient="pink">
-        <div className="pt-28 sm:pt-32 pb-0">
-          <ChapterIntro
-            eyebrow="Chapter Three"
-            title="Nightlife"
-            intro="the neon comes on and the city changes its mind about everything. edgewood avenue is a decision tree with no wrong answers. buckhead is where the volume goes up. magic city doesn't need your introduction."
-          />
-          <div className="px-6 lg:px-12 pb-12">
-            <div className="max-w-7xl mx-auto">
-              <PhotoCard
-                src="/photos/versace-tailgate.jpg"
-                alt="Versace squatting at the tailgate -- pre-game energy"
-                variant="inline"
-                caption="pre-game. activated."
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </AmbientMediaLayer>
+      <PhotoBleed
+        variant="hero"
+        src="/photos/versace-tailgate.jpg"
+        alt="Versace squatting at the tailgate -- pre-game energy"
+        tint="burgundy"
+        objectPosition="center 35%"
+        eyebrow="Chapter Three"
+        title="Nightlife"
+        intro="the neon comes on and the city changes its mind about everything. edgewood avenue is a decision tree with no wrong answers. buckhead is where the volume goes up. magic city doesn't need your introduction."
+        fullBleed={false}
+      />
 
       <QuoteBlock
         text="he's a 10 but he's at magic city on a tuesday"
@@ -260,16 +252,15 @@ export default function NightlifePage() {
       </section>
 
       {/* ===== PHOTOBOOTH BREAK ===== */}
-      <div className="px-6 lg:px-12 py-8">
-        <div className="max-w-7xl mx-auto">
-          <PhotoCard
-            src="/photos/suede-photobooth.png"
-            alt="Suede laughing in a film-burn photobooth"
-            variant="inline"
-            caption="before the night did what it did"
-          />
-        </div>
-      </div>
+      <PhotoBleed
+        variant="accent"
+        src="/photos/suede-photobooth.png"
+        alt="Suede laughing in a film-burn photobooth"
+        tint="burgundy"
+        objectPosition="center 30%"
+        captionEyebrow="film burn"
+        caption="before the night did what it did."
+      />
 
       {/* ===== 02 — THE BIG ROOMS ===== */}
       <section className="py-24 px-6 lg:px-12">
@@ -284,10 +275,13 @@ export default function NightlifePage() {
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
             ))}
           </div>
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/jake-cash.jpeg"
             alt="Versace Slippers fanning cash -- blue shades, full energy"
-            variant="chaos"
+            tint="burgundy"
+            objectPosition="center 25%"
+            captionEyebrow="the strategy"
             caption="bring ones. and more ones."
           />
           <div className="text-center">
@@ -298,11 +292,14 @@ export default function NightlifePage() {
               caption="dress accordingly."
             />
           </div>
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/versace-neon-sign.jpg"
             alt="Versace next to BABE YOU LOOK SO COOL neon sign"
-            variant="inline"
-            caption="babe you look so cool"
+            tint="burgundy"
+            objectPosition="center 40%"
+            captionEyebrow="signs from the universe"
+            caption="babe you look so cool."
           />
           <MotionWrapper delay={200}>
             <div className="flex justify-center">

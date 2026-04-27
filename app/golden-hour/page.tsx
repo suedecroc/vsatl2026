@@ -8,6 +8,7 @@ import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
+import PhotoBleed from "@/components/PhotoBleed";
 
 const sunsetSpots = [
   {
@@ -146,11 +147,14 @@ export default function GoldenHourPage() {
               <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
             ))}
           </div>
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/suede-cigar.jpeg"
             alt="Suede with a cigar, Ali poster on the wall behind"
-            variant="chaos"
-            caption="the golden hour posture"
+            tint="gold"
+            objectPosition="center 35%"
+            captionEyebrow="the posture"
+            caption="the golden hour posture."
           />
         </div>
       </section>
@@ -168,22 +172,28 @@ export default function GoldenHourPage() {
             intro="these are the spots where afternoon becomes evening. you came in daylight. you'll leave in dark. that's the whole trick."
             variant="warm"
           />
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/versace-sunglasses.jpg"
             alt="Versace with blue mirror shades at golden hour"
-            variant="inline"
-            caption="golden hour approved"
+            tint="gold"
+            objectPosition="center 30%"
+            captionEyebrow="golden hour"
+            caption="golden hour approved."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {transitionSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
             ))}
           </div>
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/versace-bathroom-fit.jpg"
             alt="Versace bathroom fit -- mirror selfie"
-            variant="inline"
-            caption="fit check: golden hour edition"
+            tint="gold"
+            objectPosition="center top"
+            captionEyebrow="fit check"
+            caption="golden hour edition."
           />
         </div>
       </section>

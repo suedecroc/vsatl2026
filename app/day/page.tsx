@@ -9,6 +9,7 @@ import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
+import PhotoBleed from "@/components/PhotoBleed";
 
 const inmanPark = [
   {
@@ -311,27 +312,17 @@ export default function DayPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <AmbientMediaLayer gradient="warm">
-        <div className="pt-28 sm:pt-32 pb-0">
-          <ChapterIntro
-            eyebrow="Chapter One"
-            title="Day"
-            intro="you land at 5. you don't check in yet. there's a wing spot that's been waiting since your flight left. the city is hot, bright, and not apologizing for it. you move through it the way you move through everything -- with intention and an appetite."
-            variant="warm"
-          />
-          <div className="px-6 lg:px-12 pb-12">
-            <div className="max-w-7xl mx-auto">
-              <PhotoCard
-                src="/photos/suede-vibe.jpeg"
-                alt="Suede -- Tyler jacket, string lights, full vibe"
-                variant="chaos"
-                caption="mood: set"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </AmbientMediaLayer>
+      <PhotoBleed
+        variant="hero"
+        src="/photos/suede-vibe.jpeg"
+        alt="Suede -- Tyler jacket, string lights, full vibe"
+        tint="gold"
+        objectPosition="center 25%"
+        eyebrow="Chapter One"
+        title="Day"
+        intro="you land at 5. you don't check in yet. there's a wing spot that's been waiting since your flight left. the city is hot, bright, and not apologizing for it. you move through it the way you move through everything -- with intention and an appetite."
+        fullBleed={false}
+      />
 
       {/* ===== 01 — FOOD ===== */}
       <section className="py-24 px-6 lg:px-12">
@@ -409,28 +400,37 @@ export default function DayPage() {
             intro="before the city shifts, there's this. beltline walks, rooftop views, a bookstore that changes your afternoon plans. the daytime has its own weight here."
             variant="warm"
           />
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/versace-mirror-fit.jpg"
             alt="Versace hotel mirror fit check"
-            variant="inline"
-            caption="fit check before we step out"
+            tint="gold"
+            objectPosition="center top"
+            captionEyebrow="fit check"
+            caption="before we step out."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {daytimeSpots.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} delay={i * 80} tagVariant="warm" />
             ))}
           </div>
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/jake-coke.jpeg"
             alt="Jake at the World of Coca-Cola -- vest and everything"
-            variant="inline"
-            caption="the man on the inside"
+            tint="gold"
+            objectPosition="center 30%"
+            captionEyebrow="the inside man"
+            caption="the man on the inside."
           />
-          <PhotoCard
+          <PhotoBleed
+            variant="accent"
             src="/photos/suede-boat.jpeg"
             alt="Suede on the water -- Caribbean energy"
-            variant="chaos"
-            caption="water break"
+            tint="gold"
+            objectPosition="center 40%"
+            captionEyebrow="intermission"
+            caption="water break."
           />
         </div>
       </section>
