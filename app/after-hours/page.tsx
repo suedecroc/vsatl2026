@@ -2,13 +2,10 @@ import Nav from "@/components/Nav";
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import AmbientMediaLayer from "@/components/AmbientMediaLayer";
 import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoSpread from "@/components/PhotoSpread";
-import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const lateNightFood = [
   {
@@ -118,15 +115,13 @@ export default function AfterHoursPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoSpread
-        variant="hero"
-        src="/photos/jordan-edboy.jpg"
-        alt="Jordan as Ed Edd n Eddy -- ed boy energy"
-        tint="purple"
-        eyebrow="Chapter Four"
-        title="After Hours"
-        intro="the truth shows up after midnight. the city strips down to what it actually is. the neon is still on but the performance is over. what's left is the real thing -- messy, honest, funny, exhausted, and still somehow going."
-      />
+      <div className="pt-12 sm:pt-16">
+        <ChapterIntro
+          eyebrow="Chapter Four"
+          title="After Hours"
+          intro="the truth shows up after midnight. the city strips down to what it actually is. the neon is still on but the performance is over. what's left is the real thing -- messy, honest, funny, exhausted, and still somehow going."
+        />
+      </div>
 
       <QuoteBlock
         text="I am your mother"
@@ -149,16 +144,6 @@ export default function AfterHoursPage() {
           </div>
         </div>
       </section>
-
-      <PhotoSpread
-        variant="accent"
-        src="/photos/versace-boot.jpg"
-        alt="Versace leg in medical boot -- pimp down moment"
-        tint="purple"
-        align="right"
-        captionEyebrow="aftermath"
-        caption="pimp down! pimp down...."
-      />
 
       {/* ===== 02 — THE REAL SCHEDULE ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">
@@ -214,22 +199,6 @@ export default function AfterHoursPage() {
         text="this is fine"
         attribution="-- you, at 3AM in the waffle house"
       />
-
-      {/* fridge wall — chaotic memory dump */}
-      <MemeStrip>
-        <MemePolaroid
-          src="/photos/meme-wine.jpg"
-          alt="B&W man with wine -- the vibe"
-          caption="the situation"
-          rotate={-3}
-        />
-        <MemePolaroid
-          src="/photos/meme-boot.jpeg"
-          alt="Snapchat pimp down moment"
-          caption="pimp down! pimp down...."
-          rotate={2.5}
-        />
-      </MemeStrip>
 
       <MotionWrapper>
         <div className="py-8 px-6 lg:px-12">

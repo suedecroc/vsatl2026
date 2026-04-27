@@ -2,15 +2,11 @@ import Nav from "@/components/Nav";
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import AmbientMediaLayer from "@/components/AmbientMediaLayer";
 import MobileCarousel from "@/components/MobileCarousel";
 import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoCard from "@/components/PhotoCard";
-import PhotoSpread from "@/components/PhotoSpread";
-import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const inmanPark = [
   {
@@ -318,15 +314,14 @@ export default function DayPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoSpread
-        variant="hero"
-        src="/photos/suede-vibe.jpeg"
-        alt="Suede -- Tyler jacket, string lights, full vibe"
-        tint="gold"
-        eyebrow="Chapter One"
-        title="Day"
-        intro="you land at 5. you don't check in yet. there's a wing spot that's been waiting since your flight left. the city is hot, bright, and not apologizing for it. you move through it the way you move through everything -- with intention and an appetite."
-      />
+      <div className="pt-12 sm:pt-16">
+        <ChapterIntro
+          eyebrow="Chapter One"
+          title="Day"
+          intro="you land at 5. you don't check in yet. there's a wing spot that's been waiting since your flight left. the city is hot, bright, and not apologizing for it. you move through it the way you move through everything -- with intention and an appetite."
+          variant="warm"
+        />
+      </div>
 
       {/* ===== 01 — FOOD ===== */}
       <section className="py-24 px-6 lg:px-12">
@@ -368,15 +363,6 @@ export default function DayPage() {
             </MobileCarousel>
           </div>
 
-          <MemeStrip>
-            <MemePolaroid
-              src="/photos/jordan-cat-filter.jpg"
-              alt="Jordan cat filter selfie outdoors"
-              caption="intermission"
-              rotate={-2}
-            />
-          </MemeStrip>
-
           <div>
             <MotionWrapper>
               <h3 className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-dirty-orange uppercase mb-6 neon-glow-orange">
@@ -405,16 +391,6 @@ export default function DayPage() {
         variant="warm"
       />
 
-      <PhotoSpread
-        variant="accent"
-        src="/photos/versace-mirror-fit.jpg"
-        alt="Versace hotel mirror fit check"
-        tint="gold"
-        align="right"
-        captionEyebrow="fit check"
-        caption="before we step out."
-      />
-
       <section className="py-16 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -424,26 +400,6 @@ export default function DayPage() {
           </div>
         </div>
       </section>
-
-      <PhotoSpread
-        variant="accent"
-        src="/photos/jake-coke.jpeg"
-        alt="Jake at the World of Coca-Cola -- vest and everything"
-        tint="gold"
-        align="left"
-        captionEyebrow="the inside man"
-        caption="the man on the inside."
-      />
-
-      <PhotoSpread
-        variant="accent"
-        src="/photos/suede-boat.jpeg"
-        alt="Suede on the water -- Caribbean energy"
-        tint="gold"
-        align="right"
-        captionEyebrow="intermission"
-        caption="water break."
-      />
 
       {/* ===== 03 — ITINERARY ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">

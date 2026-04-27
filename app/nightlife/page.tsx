@@ -2,16 +2,12 @@ import Nav from "@/components/Nav";
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import AmbientMediaLayer from "@/components/AmbientMediaLayer";
 import MobileCarousel from "@/components/MobileCarousel";
 import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import StickerButton from "@/components/StickerButton";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoCard from "@/components/PhotoCard";
-import PhotoSpread from "@/components/PhotoSpread";
-import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const edgewoodSpots = [
   {
@@ -221,15 +217,13 @@ export default function NightlifePage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoSpread
-        variant="hero"
-        src="/photos/versace-tailgate.jpg"
-        alt="Versace squatting at the tailgate -- pre-game energy"
-        tint="burgundy"
-        eyebrow="Chapter Three"
-        title="Nightlife"
-        intro="the neon comes on and the city changes its mind about everything. edgewood avenue is a decision tree with no wrong answers. buckhead is where the volume goes up. magic city doesn't need your introduction."
-      />
+      <div className="pt-12 sm:pt-16">
+        <ChapterIntro
+          eyebrow="Chapter Three"
+          title="Nightlife"
+          intro="the neon comes on and the city changes its mind about everything. edgewood avenue is a decision tree with no wrong answers. buckhead is where the volume goes up. magic city doesn't need your introduction."
+        />
+      </div>
 
       <QuoteBlock
         text="he's a 10 but he's at magic city on a tuesday"
@@ -254,17 +248,6 @@ export default function NightlifePage() {
         </div>
       </section>
 
-      {/* ===== PHOTOBOOTH BREAK ===== */}
-      <PhotoSpread
-        variant="accent"
-        src="/photos/suede-photobooth.png"
-        alt="Suede laughing in a film-burn photobooth"
-        tint="burgundy"
-        align="right"
-        captionEyebrow="film burn"
-        caption="before the night did what it did."
-      />
-
       {/* ===== 02 — THE BIG ROOMS ===== */}
       <ChapterIntro
         eyebrow="02 — Main Event"
@@ -281,35 +264,6 @@ export default function NightlifePage() {
           </div>
         </div>
       </section>
-
-      <PhotoSpread
-        variant="accent"
-        src="/photos/jake-cash.jpeg"
-        alt="Versace Slippers fanning cash -- blue shades, full energy"
-        tint="burgundy"
-        align="left"
-        captionEyebrow="the strategy"
-        caption="bring ones. and more ones."
-      />
-
-      <MemeStrip>
-        <MemePolaroid
-          src="/photos/meme-dafoe.png"
-          alt="Willem Dafoe -- dress accordingly"
-          caption="dress accordingly."
-          rotate={3}
-        />
-      </MemeStrip>
-
-      <PhotoSpread
-        variant="accent"
-        src="/photos/versace-neon-sign.jpg"
-        alt="Versace next to BABE YOU LOOK SO COOL neon sign"
-        tint="burgundy"
-        align="right"
-        captionEyebrow="signs from the universe"
-        caption="babe you look so cool."
-      />
 
       <section className="py-8 px-6 lg:px-12">
         <MotionWrapper delay={200}>

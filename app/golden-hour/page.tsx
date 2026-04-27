@@ -2,12 +2,10 @@ import Nav from "@/components/Nav";
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import AmbientMediaLayer from "@/components/AmbientMediaLayer";
 import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoSpread from "@/components/PhotoSpread";
 
 const sunsetSpots = [
   {
@@ -110,15 +108,14 @@ export default function GoldenHourPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoSpread
-        variant="hero"
-        src="/photos/jordan-mspaint.jpg"
-        alt="Jordan in MS Paint window edit -- nostalgia buffer loading"
-        tint="gold"
-        eyebrow="Chapter Two"
-        title="Golden Hour"
-        intro="the city shifts around 5. the light gets long and warm. the pace drops half a gear. you're between things -- between day and night, between plans, between versions of yourself. this is the in-between and it's the best part."
-      />
+      <div className="pt-12 sm:pt-16">
+        <ChapterIntro
+          eyebrow="Chapter Two"
+          title="Golden Hour"
+          intro="the city shifts around 5. the light gets long and warm. the pace drops half a gear. you're between things -- between day and night, between plans, between versions of yourself. this is the in-between and it's the best part."
+          variant="warm"
+        />
+      </div>
 
       {/* ===== 01 — THE SHIFT ===== */}
       <ChapterIntro
@@ -138,16 +135,6 @@ export default function GoldenHourPage() {
         </div>
       </section>
 
-      <PhotoSpread
-        variant="accent"
-        src="/photos/suede-cigar.jpeg"
-        alt="Suede with a cigar, Ali poster on the wall behind"
-        tint="gold"
-        align="right"
-        captionEyebrow="the posture"
-        caption="the golden hour posture."
-      />
-
       <QuoteBlock
         text="you're driving through midtown and the light hits the glass buildings and for a second the whole city looks like it was designed for exactly this moment"
       />
@@ -160,16 +147,6 @@ export default function GoldenHourPage() {
         variant="warm"
       />
 
-      <PhotoSpread
-        variant="accent"
-        src="/photos/versace-sunglasses.jpg"
-        alt="Versace with blue mirror shades at golden hour"
-        tint="gold"
-        align="left"
-        captionEyebrow="golden hour"
-        caption="golden hour approved."
-      />
-
       <section className="py-12 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -179,16 +156,6 @@ export default function GoldenHourPage() {
           </div>
         </div>
       </section>
-
-      <PhotoSpread
-        variant="accent"
-        src="/photos/versace-bathroom-fit.jpg"
-        alt="Versace bathroom fit -- mirror selfie"
-        tint="gold"
-        align="right"
-        captionEyebrow="fit check"
-        caption="golden hour edition."
-      />
 
       {/* ===== 03 — THE FLOW ===== */}
       <section className="bg-sweat grain py-24 px-6 lg:px-12">
