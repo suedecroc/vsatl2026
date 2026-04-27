@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 const tabs = [
-  { href: "/day", label: "Day" },
-  { href: "/golden-hour", label: "Golden Hour" },
-  { href: "/nightlife", label: "Nightlife" },
-  { href: "/after-hours", label: "After Hours" },
+  { id: "day", href: "/#day", label: "Day" },
+  { id: "golden-hour", href: "/#golden-hour", label: "Golden Hour" },
+  { id: "nightlife", href: "/#nightlife", label: "Nightlife" },
+  { id: "after-hours", href: "/#after-hours", label: "After Hours" },
 ];
 
 const tickerItems = [
@@ -24,14 +23,52 @@ const tickerItems = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
+  const [activeId, setActiveId] = useState<string>("day");
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const activeLabel = tabs.find((t) => t.href === pathname)?.label ?? "VS ATL";
+  // Track which chapter is most-visible in the viewport
+  useEffect(() => {
+    const sectionIds = tabs.map((t) => t.id);
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    if (sections.length === 0) return;
+
+    // Track ratios per section; pick the one with the highest visible ratio.
+    const visibility = new Map<string, number>();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          visibility.set(entry.target.id, entry.intersectionRatio);
+        }
+        let topId = sectionIds[0];
+        let topRatio = 0;
+        for (const [id, ratio] of visibility.entries()) {
+          if (ratio > topRatio) {
+            topRatio = ratio;
+            topId = id;
+          }
+        }
+        if (topRatio > 0) setActiveId(topId);
+      },
+      {
+        // Observe whether each chapter is between the top-quarter and bottom-half of viewport
+        rootMargin: "-20% 0px -50% 0px",
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
+  const activeLabel = tabs.find((t) => t.id === activeId)?.label ?? "VS ATL";
 
   return (
     <>
@@ -40,7 +77,7 @@ export default function Nav() {
 
           {/* Logo */}
           <Link
-            href="/day"
+            href="/"
             className="font-[family-name:var(--font-display)] text-neon-pink text-xl tracking-wider neon-glow-pink flex items-center pr-5 lg:pr-8 shrink-0"
           >
             VS ATL
@@ -51,10 +88,10 @@ export default function Nav() {
           {/* Desktop tabs */}
           <div className="hidden md:flex items-stretch">
             {tabs.map((tab) => {
-              const active = pathname === tab.href;
+              const active = activeId === tab.id;
               return (
                 <Link
-                  key={tab.href}
+                  key={tab.id}
                   href={tab.href}
                   className={`
                     relative flex items-center px-4 lg:px-5
@@ -114,12 +151,12 @@ export default function Nav() {
           <div className="relative z-10 flex flex-col items-center gap-6">
             {tabs.map((tab) => (
               <Link
-                key={tab.href}
+                key={tab.id}
                 href={tab.href}
                 onClick={() => setOpen(false)}
                 className={`
                   font-[family-name:var(--font-display)] text-5xl sm:text-6xl tracking-wide uppercase transition-colors
-                  ${pathname === tab.href ? "text-neon-pink neon-glow-pink" : "text-cream/60 hover:text-cream"}
+                  ${activeId === tab.id ? "text-neon-pink neon-glow-pink" : "text-cream/60 hover:text-cream"}
                 `}
               >
                 {tab.label}
