@@ -7,7 +7,6 @@ import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoCard from "@/components/PhotoCard";
 import PhotoBleed from "@/components/PhotoBleed";
 
 const sunsetSpots = [
@@ -111,27 +110,16 @@ export default function GoldenHourPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <AmbientMediaLayer gradient="warm">
-        <div className="pt-28 sm:pt-32 pb-0">
-          <ChapterIntro
-            eyebrow="Chapter Two"
-            title="Golden Hour"
-            intro="the city shifts around 5. the light gets long and warm. the pace drops half a gear. you're between things -- between day and night, between plans, between versions of yourself. this is the in-between and it's the best part."
-            variant="warm"
-          />
-          <div className="px-6 lg:px-12 pb-12">
-            <div className="max-w-7xl mx-auto">
-              <PhotoCard
-                src="/photos/jordan-mspaint.jpg"
-                alt="Jordan in MS Paint window edit"
-                variant="chaos"
-                caption="nostalgia buffer loading..."
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </AmbientMediaLayer>
+      <PhotoBleed
+        variant="hero"
+        src="/photos/jordan-mspaint.jpg"
+        alt="Jordan in MS Paint window edit -- nostalgia buffer loading"
+        tint="gold"
+        objectPosition="center"
+        eyebrow="Chapter Two"
+        title="Golden Hour"
+        intro="the city shifts around 5. the light gets long and warm. the pace drops half a gear. you're between things -- between day and night, between plans, between versions of yourself. this is the in-between and it's the best part."
+      />
 
       {/* ===== 01 — THE SHIFT ===== */}
       <ChapterIntro

@@ -7,8 +7,8 @@ import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoCard from "@/components/PhotoCard";
 import PhotoBleed from "@/components/PhotoBleed";
+import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const lateNightFood = [
   {
@@ -118,27 +118,16 @@ export default function AfterHoursPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <AmbientMediaLayer gradient="purple">
-        <div className="pt-28 sm:pt-32 pb-0">
-          <ChapterIntro
-            eyebrow="Chapter Four"
-            title="After Hours"
-            intro="the truth shows up after midnight. the city strips down to what it actually is. the neon is still on but the performance is over. what's left is the real thing -- messy, honest, funny, exhausted, and still somehow going."
-          />
-          <div className="px-6 lg:px-12 pb-12">
-            <div className="max-w-7xl mx-auto">
-              <PhotoCard
-                src="/photos/jordan-edboy.jpg"
-                alt="Jordan as Ed Edd n Eddy -- ed boy energy"
-                variant="meme"
-                landscape
-                caption="that's my horse"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </AmbientMediaLayer>
+      <PhotoBleed
+        variant="hero"
+        src="/photos/jordan-edboy.jpg"
+        alt="Jordan as Ed Edd n Eddy -- ed boy energy"
+        tint="purple"
+        objectPosition="center"
+        eyebrow="Chapter Four"
+        title="After Hours"
+        intro="the truth shows up after midnight. the city strips down to what it actually is. the neon is still on but the performance is over. what's left is the real thing -- messy, honest, funny, exhausted, and still somehow going."
+      />
 
       <QuoteBlock
         text="I am your mother"
@@ -153,13 +142,7 @@ export default function AfterHoursPage() {
       />
 
       <section className="py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <PhotoCard
-            src="/photos/meme-wine.jpg"
-            alt="B&W man with wine -- the vibe"
-            variant="meme"
-            caption="the situation"
-          />
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {lateNightFood.map((spot, i) => (
               <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
@@ -228,21 +211,26 @@ export default function AfterHoursPage() {
         </div>
       </section>
 
-      <div className="px-6 lg:px-12 py-8">
-        <div className="max-w-7xl mx-auto">
-          <PhotoCard
-            src="/photos/meme-boot.jpeg"
-            alt="Snapchat pimp down moment"
-            variant="meme"
-            caption="pimp down! pimp down...."
-          />
-        </div>
-      </div>
-
       <QuoteBlock
         text="this is fine"
         attribution="-- you, at 3AM in the waffle house"
       />
+
+      {/* fridge wall — chaotic memory dump */}
+      <MemeStrip>
+        <MemePolaroid
+          src="/photos/meme-wine.jpg"
+          alt="B&W man with wine -- the vibe"
+          caption="the situation"
+          rotate={-3}
+        />
+        <MemePolaroid
+          src="/photos/meme-boot.jpeg"
+          alt="Snapchat pimp down moment"
+          caption="pimp down! pimp down...."
+          rotate={2.5}
+        />
+      </MemeStrip>
 
       <MotionWrapper>
         <div className="py-8 px-6 lg:px-12">

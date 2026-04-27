@@ -10,6 +10,7 @@ import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
 import PhotoBleed from "@/components/PhotoBleed";
+import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const inmanPark = [
   {
@@ -368,12 +369,14 @@ export default function DayPage() {
             </MobileCarousel>
           </div>
 
-          <PhotoCard
-            src="/photos/jordan-cat-filter.jpg"
-            alt="Jordan cat filter selfie outdoors"
-            variant="chaos"
-            caption="intermission"
-          />
+          <MemeStrip>
+            <MemePolaroid
+              src="/photos/jordan-cat-filter.jpg"
+              alt="Jordan cat filter selfie outdoors"
+              caption="intermission"
+              rotate={-2}
+            />
+          </MemeStrip>
 
           <div>
             <MotionWrapper>

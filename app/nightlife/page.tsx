@@ -11,6 +11,7 @@ import StickerButton from "@/components/StickerButton";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
 import PhotoBleed from "@/components/PhotoBleed";
+import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const edgewoodSpots = [
   {
@@ -292,18 +293,14 @@ export default function NightlifePage() {
         caption="bring ones. and more ones."
       />
 
-      <section className="py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <PhotoCard
-              src="/photos/meme-dafoe.png"
-              alt="Willem Dafoe -- dress accordingly"
-              variant="meme"
-              caption="dress accordingly."
-            />
-          </div>
-        </div>
-      </section>
+      <MemeStrip>
+        <MemePolaroid
+          src="/photos/meme-dafoe.png"
+          alt="Willem Dafoe -- dress accordingly"
+          caption="dress accordingly."
+          rotate={3}
+        />
+      </MemeStrip>
 
       <PhotoBleed
         variant="accent"
