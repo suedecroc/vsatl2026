@@ -10,7 +10,7 @@ import MotionWrapper from "@/components/MotionWrapper";
 import StickerButton from "@/components/StickerButton";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
-import PhotoBleed from "@/components/PhotoBleed";
+import PhotoSpread from "@/components/PhotoSpread";
 import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const edgewoodSpots = [
@@ -221,12 +221,11 @@ export default function NightlifePage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoBleed
+      <PhotoSpread
         variant="hero"
         src="/photos/versace-tailgate.jpg"
         alt="Versace squatting at the tailgate -- pre-game energy"
         tint="burgundy"
-        objectPosition="center 35%"
         eyebrow="Chapter Three"
         title="Nightlife"
         intro="the neon comes on and the city changes its mind about everything. edgewood avenue is a decision tree with no wrong answers. buckhead is where the volume goes up. magic city doesn't need your introduction."
@@ -256,12 +255,12 @@ export default function NightlifePage() {
       </section>
 
       {/* ===== PHOTOBOOTH BREAK ===== */}
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/suede-photobooth.png"
         alt="Suede laughing in a film-burn photobooth"
         tint="burgundy"
-        objectPosition="center 30%"
+        align="right"
         captionEyebrow="film burn"
         caption="before the night did what it did."
       />
@@ -283,12 +282,12 @@ export default function NightlifePage() {
         </div>
       </section>
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/jake-cash.jpeg"
         alt="Versace Slippers fanning cash -- blue shades, full energy"
         tint="burgundy"
-        objectPosition="center 25%"
+        align="left"
         captionEyebrow="the strategy"
         caption="bring ones. and more ones."
       />
@@ -302,12 +301,12 @@ export default function NightlifePage() {
         />
       </MemeStrip>
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/versace-neon-sign.jpg"
         alt="Versace next to BABE YOU LOOK SO COOL neon sign"
         tint="burgundy"
-        objectPosition="center 40%"
+        align="right"
         captionEyebrow="signs from the universe"
         caption="babe you look so cool."
       />

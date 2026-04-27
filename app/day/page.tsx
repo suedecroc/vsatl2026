@@ -9,7 +9,7 @@ import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
 import PhotoCard from "@/components/PhotoCard";
-import PhotoBleed from "@/components/PhotoBleed";
+import PhotoSpread from "@/components/PhotoSpread";
 import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const inmanPark = [
@@ -318,12 +318,11 @@ export default function DayPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoBleed
+      <PhotoSpread
         variant="hero"
         src="/photos/suede-vibe.jpeg"
         alt="Suede -- Tyler jacket, string lights, full vibe"
         tint="gold"
-        objectPosition="center 25%"
         eyebrow="Chapter One"
         title="Day"
         intro="you land at 5. you don't check in yet. there's a wing spot that's been waiting since your flight left. the city is hot, bright, and not apologizing for it. you move through it the way you move through everything -- with intention and an appetite."
@@ -406,12 +405,12 @@ export default function DayPage() {
         variant="warm"
       />
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/versace-mirror-fit.jpg"
         alt="Versace hotel mirror fit check"
         tint="gold"
-        objectPosition="center top"
+        align="right"
         captionEyebrow="fit check"
         caption="before we step out."
       />
@@ -426,22 +425,22 @@ export default function DayPage() {
         </div>
       </section>
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/jake-coke.jpeg"
         alt="Jake at the World of Coca-Cola -- vest and everything"
         tint="gold"
-        objectPosition="center 30%"
+        align="left"
         captionEyebrow="the inside man"
         caption="the man on the inside."
       />
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/suede-boat.jpeg"
         alt="Suede on the water -- Caribbean energy"
         tint="gold"
-        objectPosition="center 40%"
+        align="right"
         captionEyebrow="intermission"
         caption="water break."
       />

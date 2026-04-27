@@ -7,7 +7,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoBleed from "@/components/PhotoBleed";
+import PhotoSpread from "@/components/PhotoSpread";
 import MemePolaroid, { MemeStrip } from "@/components/MemePolaroid";
 
 const lateNightFood = [
@@ -118,12 +118,11 @@ export default function AfterHoursPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoBleed
+      <PhotoSpread
         variant="hero"
         src="/photos/jordan-edboy.jpg"
         alt="Jordan as Ed Edd n Eddy -- ed boy energy"
         tint="purple"
-        objectPosition="center"
         eyebrow="Chapter Four"
         title="After Hours"
         intro="the truth shows up after midnight. the city strips down to what it actually is. the neon is still on but the performance is over. what's left is the real thing -- messy, honest, funny, exhausted, and still somehow going."
@@ -151,12 +150,12 @@ export default function AfterHoursPage() {
         </div>
       </section>
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/versace-boot.jpg"
         alt="Versace leg in medical boot -- pimp down moment"
         tint="purple"
-        objectPosition="center 60%"
+        align="right"
         captionEyebrow="aftermath"
         caption="pimp down! pimp down...."
       />

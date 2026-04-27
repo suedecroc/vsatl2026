@@ -7,7 +7,7 @@ import FloatingCTA from "@/components/FloatingCTA";
 import FooterFrame from "@/components/FooterFrame";
 import MotionWrapper from "@/components/MotionWrapper";
 import ChapterNav from "@/components/ChapterNav";
-import PhotoBleed from "@/components/PhotoBleed";
+import PhotoSpread from "@/components/PhotoSpread";
 
 const sunsetSpots = [
   {
@@ -110,12 +110,11 @@ export default function GoldenHourPage() {
       <FloatingCTA />
 
       {/* ===== HERO ===== */}
-      <PhotoBleed
+      <PhotoSpread
         variant="hero"
         src="/photos/jordan-mspaint.jpg"
         alt="Jordan in MS Paint window edit -- nostalgia buffer loading"
         tint="gold"
-        objectPosition="center"
         eyebrow="Chapter Two"
         title="Golden Hour"
         intro="the city shifts around 5. the light gets long and warm. the pace drops half a gear. you're between things -- between day and night, between plans, between versions of yourself. this is the in-between and it's the best part."
@@ -139,12 +138,12 @@ export default function GoldenHourPage() {
         </div>
       </section>
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/suede-cigar.jpeg"
         alt="Suede with a cigar, Ali poster on the wall behind"
         tint="gold"
-        objectPosition="center 35%"
+        align="right"
         captionEyebrow="the posture"
         caption="the golden hour posture."
       />
@@ -161,12 +160,12 @@ export default function GoldenHourPage() {
         variant="warm"
       />
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/versace-sunglasses.jpg"
         alt="Versace with blue mirror shades at golden hour"
         tint="gold"
-        objectPosition="center 30%"
+        align="left"
         captionEyebrow="golden hour"
         caption="golden hour approved."
       />
@@ -181,12 +180,12 @@ export default function GoldenHourPage() {
         </div>
       </section>
 
-      <PhotoBleed
+      <PhotoSpread
         variant="accent"
         src="/photos/versace-bathroom-fit.jpg"
         alt="Versace bathroom fit -- mirror selfie"
         tint="gold"
-        objectPosition="center top"
+        align="right"
         captionEyebrow="fit check"
         caption="golden hour edition."
       />
