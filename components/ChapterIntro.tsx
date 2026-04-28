@@ -52,7 +52,7 @@ export default function ChapterIntro({
         {intro && (
           <MotionWrapper delay={200}>
             <p
-              className={`font-[family-name:var(--font-body)] text-base sm:text-lg mt-8 leading-relaxed mx-auto max-w-2xl ${
+              className={`font-[family-name:var(--font-body)] text-lg sm:text-xl mt-8 leading-relaxed mx-auto max-w-2xl ${
                 isDark ? "text-cream/60" : "text-midnight/70"
               }`}
             >

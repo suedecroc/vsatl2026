@@ -2,6 +2,7 @@ import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
 import MotionWrapper from "@/components/MotionWrapper";
+import TimelineEvent from "@/components/TimelineEvent";
 
 const inmanPark = [
   {
@@ -327,7 +328,7 @@ export default function DaySection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <NeighborhoodHeader label="Inman Park" />
           <div className="divide-y divide-cream/8">
             {inmanPark.map((spot, i) => (
@@ -381,44 +382,31 @@ export default function DaySection() {
             intro="the daytime itinerary. flexible by design, intentional by nature. adjust as needed. atlanta rewards spontaneity."
             variant="warm"
           />
-          <div className="space-y-6 mt-8">
+          <div className="space-y-12 mt-12">
             {dayItinerary.map((day) => (
               <MotionWrapper key={day.day}>
-                <article className="border border-dirty-orange/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 hover:border-dirty-orange/40 transition-colors duration-300">
-                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-5 pb-4 border-b border-cream/8">
-                    <span className="inline-block px-3 py-1 font-[family-name:var(--font-display)] text-xs tracking-widest uppercase bg-dirty-orange text-midnight -skew-x-3">
+                <article className="border border-dirty-orange/20 bg-charcoal/40 rounded-sm p-8 sm:p-12 lg:p-16 hover:border-dirty-orange/40 transition-colors duration-300">
+                  <header className="text-center pb-8 mb-4 border-b border-cream/10">
+                    <span className="inline-block px-4 py-1.5 font-[family-name:var(--font-display)] text-xs tracking-widest uppercase bg-dirty-orange text-midnight -skew-x-3">
                       <span className="skew-x-3 inline-block">{day.day}</span>
                     </span>
-                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-[11px] tracking-[0.25em] uppercase">
+                    <p className="font-[family-name:var(--font-heading)] text-[11px] text-chrome tracking-[0.3em] uppercase mt-4">
                       {day.date}
-                    </span>
-                    <h3 className="font-[family-name:var(--font-display)] text-lg sm:text-xl text-cream uppercase tracking-wide ml-auto">
+                    </p>
+                    <h3 className="font-[family-name:var(--font-display)] text-2xl sm:text-3xl lg:text-4xl text-cream uppercase tracking-wide mt-5 neon-glow-orange">
                       {day.title}
                     </h3>
                   </header>
-                  <div className="divide-y divide-cream/5">
+                  <div className="divide-y divide-cream/8">
                     {day.events.map((event) => (
-                      <div
+                      <TimelineEvent
                         key={`${day.day}-${event.time}`}
-                        className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-4 first:pt-0 last:pb-0"
-                      >
-                        <span className="font-[family-name:var(--font-heading)] text-[11px] text-dirty-orange/60 tracking-[0.15em] uppercase pt-1">
-                          {event.time}
-                        </span>
-                        <div>
-                          <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                            {event.spot}
-                          </p>
-                          {event.address && (
-                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-[11px] mt-0.5 tracking-wide">
-                              {event.address}
-                            </p>
-                          )}
-                          <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
-                            {event.desc}
-                          </p>
-                        </div>
-                      </div>
+                        time={event.time}
+                        spot={event.spot}
+                        address={event.address}
+                        desc={event.desc}
+                        accent="gold"
+                      />
                     ))}
                   </div>
                 </article>

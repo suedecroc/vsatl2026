@@ -1,7 +1,7 @@
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import MotionWrapper from "@/components/MotionWrapper";
+import TimelineEvent from "@/components/TimelineEvent";
 
 const sunsetSpots = [
   {
@@ -109,7 +109,7 @@ export default function GoldenHourSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-5xl mx-auto divide-y divide-cream/8">
           {sunsetSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
           ))}
@@ -129,7 +129,7 @@ export default function GoldenHourSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-5xl mx-auto divide-y divide-cream/8">
           {transitionSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
           ))}
@@ -145,23 +145,16 @@ export default function GoldenHourSection() {
             intro="golden hour has a rhythm. you don&rsquo;t force it. you let it carry you from rooftop to beltline to patio to dinner. the city does the work."
             variant="warm"
           />
-          <div className="divide-y divide-cream/5 mt-4">
+          <div className="divide-y divide-cream/8 mt-8">
             {goldenItinerary.map((event, i) => (
-              <MotionWrapper key={event.time} delay={i * 60}>
-                <div className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-5">
-                  <span className="font-[family-name:var(--font-heading)] text-[11px] text-dirty-orange/70 tracking-[0.15em] uppercase pt-1">
-                    {event.time}
-                  </span>
-                  <div>
-                    <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                      {event.spot}
-                    </p>
-                    <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
-                      {event.desc}
-                    </p>
-                  </div>
-                </div>
-              </MotionWrapper>
+              <TimelineEvent
+                key={event.time}
+                time={event.time}
+                spot={event.spot}
+                desc={event.desc}
+                accent="gold"
+                delay={i * 60}
+              />
             ))}
           </div>
         </div>

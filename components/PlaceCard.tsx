@@ -32,63 +32,65 @@ export default function PlaceCard({
 
   return (
     <MotionWrapper delay={delay}>
-      <article className="lg:grid lg:grid-cols-12 lg:gap-12 py-8 sm:py-10 group">
-        {/* LEFT — name / address / tags */}
-        <div className="lg:col-span-4 mb-3 lg:mb-0">
-          <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl tracking-wide uppercase text-cream leading-tight">
-            {name}
-          </h3>
-          {address && (
-            <p className="font-[family-name:var(--font-heading)] text-[11px] text-cream/40 tracking-wide mt-1.5">
-              {address}
-            </p>
-          )}
-          {tags.length > 0 && (
-            <p className="font-[family-name:var(--font-heading)] text-[10px] text-cream/30 tracking-[0.18em] uppercase mt-3">
-              {tags.join(" · ")}
-            </p>
-          )}
-        </div>
+      <article className="text-center py-14 sm:py-20 px-6">
+        {/* NAME — biggest, display, cream, glow */}
+        <h3 className="font-[family-name:var(--font-display)] text-3xl sm:text-4xl lg:text-5xl uppercase text-cream tracking-wide leading-[1.05] neon-glow-subtle">
+          {name}
+        </h3>
 
-        {/* RIGHT — description / must order / links */}
-        <div className="lg:col-span-8">
-          {description && (
-            <p className="font-[family-name:var(--font-body)] text-sm sm:text-[15px] text-cream/65 leading-relaxed">
-              {description}
-            </p>
-          )}
+        {/* ADDRESS — heading, chrome (gray), small caps tracked */}
+        {address && (
+          <p className="font-[family-name:var(--font-heading)] text-[11px] text-chrome tracking-[0.3em] uppercase mt-4">
+            {address}
+          </p>
+        )}
 
-          {mustOrder && (
-            <p className={`font-[family-name:var(--font-heading)] text-[11px] tracking-wide italic mt-3 ${accentColor}`}>
-              must order: {mustOrder}
-            </p>
-          )}
+        {/* TAGS — heading, dim, middot text */}
+        {tags.length > 0 && (
+          <p className="font-[family-name:var(--font-heading)] text-[10px] text-cream/30 tracking-[0.3em] uppercase mt-5">
+            {tags.join(" · ")}
+          </p>
+        )}
 
-          {(website || mapUrl) && (
-            <div className="flex gap-6 mt-4">
-              {website && (
-                <a
-                  href={website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`font-[family-name:var(--font-heading)] text-[10px] tracking-[0.2em] uppercase text-cream/40 ${accentHover} transition-colors`}
-                >
-                  website ↗
-                </a>
-              )}
-              {mapUrl && (
-                <a
-                  href={mapUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`font-[family-name:var(--font-heading)] text-[10px] tracking-[0.2em] uppercase text-cream/40 ${accentHover} transition-colors`}
-                >
-                  maps ↗
-                </a>
-              )}
-            </div>
-          )}
-        </div>
+        {/* DESCRIPTION — body, cream/60, narrow centered column */}
+        {description && (
+          <p className="font-[family-name:var(--font-body)] text-base sm:text-lg text-cream/60 leading-relaxed max-w-2xl mx-auto mt-8">
+            {description}
+          </p>
+        )}
+
+        {/* MUST ORDER — heading italic accent color */}
+        {mustOrder && (
+          <p className={`font-[family-name:var(--font-heading)] text-xs italic tracking-wide mt-6 ${accentColor}`}>
+            must order: {mustOrder}
+          </p>
+        )}
+
+        {/* LINKS — centered row */}
+        {(website || mapUrl) && (
+          <div className="flex gap-10 justify-center mt-8">
+            {website && (
+              <a
+                href={website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-[family-name:var(--font-heading)] text-[11px] tracking-[0.3em] uppercase text-cream/40 ${accentHover} transition-colors`}
+              >
+                website ↗
+              </a>
+            )}
+            {mapUrl && (
+              <a
+                href={mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-[family-name:var(--font-heading)] text-[11px] tracking-[0.3em] uppercase text-cream/40 ${accentHover} transition-colors`}
+              >
+                maps ↗
+              </a>
+            )}
+          </div>
+        )}
       </article>
     </MotionWrapper>
   );

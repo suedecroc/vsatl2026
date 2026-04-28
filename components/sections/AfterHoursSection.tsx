@@ -2,6 +2,7 @@ import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
 import MotionWrapper from "@/components/MotionWrapper";
+import TimelineEvent from "@/components/TimelineEvent";
 
 const lateNightFood = [
   {
@@ -120,7 +121,7 @@ export default function AfterHoursSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-5xl mx-auto divide-y divide-cream/8">
           {lateNightFood.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
           ))}
@@ -135,23 +136,16 @@ export default function AfterHoursSection() {
             title="How the Night Actually Goes"
             intro="nobody follows the itinerary after midnight. here&rsquo;s what actually happens."
           />
-          <div className="divide-y divide-cream/5 mt-4">
+          <div className="divide-y divide-cream/8 mt-8">
             {chaosTimeline.map((event, i) => (
-              <MotionWrapper key={event.time} delay={i * 60}>
-                <div className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-5">
-                  <span className="font-[family-name:var(--font-heading)] text-[11px] text-club-purple/70 tracking-[0.15em] uppercase pt-1">
-                    {event.time}
-                  </span>
-                  <div>
-                    <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                      {event.spot}
-                    </p>
-                    <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
-                      {event.desc}
-                    </p>
-                  </div>
-                </div>
-              </MotionWrapper>
+              <TimelineEvent
+                key={event.time}
+                time={event.time}
+                spot={event.spot}
+                desc={event.desc}
+                accent="purple"
+                delay={i * 60}
+              />
             ))}
           </div>
         </div>
@@ -177,28 +171,17 @@ export default function AfterHoursSection() {
         intro="saturday. you made it. everything hurts but nothing is broken. time to eat brunch like you earned it, because you did."
       />
       <section className="pb-16 px-6 lg:px-12">
-        <div className="max-w-5xl mx-auto divide-y divide-cream/5">
+        <div className="max-w-5xl mx-auto divide-y divide-cream/8">
           {saturdayWindDown.map((event, i) => (
-            <MotionWrapper key={event.time} delay={i * 60}>
-              <div className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-5">
-                <span className="font-[family-name:var(--font-heading)] text-[11px] text-club-purple/60 tracking-[0.15em] uppercase pt-1">
-                  {event.time}
-                </span>
-                <div>
-                  <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                    {event.spot}
-                  </p>
-                  {event.address && (
-                    <p className="font-[family-name:var(--font-heading)] text-cream/30 text-[11px] mt-0.5 tracking-wide">
-                      {event.address}
-                    </p>
-                  )}
-                  <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
-                    {event.desc}
-                  </p>
-                </div>
-              </div>
-            </MotionWrapper>
+            <TimelineEvent
+              key={event.time}
+              time={event.time}
+              spot={event.spot}
+              address={event.address}
+              desc={event.desc}
+              accent="purple"
+              delay={i * 60}
+            />
           ))}
         </div>
       </section>
