@@ -1,0 +1,1135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>atlanna — 04.29 → 05.03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --ink:#0a0a0a;
+  --ink-2:#121212;
+  --ink-3:#1a1a1a;
+  --cream:#f4ede3;
+  --cream-dim:#c9c2b6;
+  --cream-ghost:#7a7569;
+  --burgundy:#7a1f2b;
+  --burgundy-deep:#5a1620;
+  --gold:#c9a86a;
+  --gold-soft:#b08f4e;
+  --chrome:#d9d4c7;
+  --hairline:rgba(244,237,227,0.12);
+  --hairline-2:rgba(244,237,227,0.06);
+
+  --display:"Space Grotesk", sans-serif;
+  --body:"Inter", sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, monospace;
+
+  --pad-x: clamp(20px, 5vw, 80px);
+  --grid-gap: clamp(16px, 2.4vw, 32px);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ink);color:var(--cream);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{
+  font-family:var(--body);
+  font-size:16px;
+  line-height:1.55;
+  font-weight:300;
+  overflow-x:hidden;
+}
+::selection{background:var(--burgundy);color:var(--cream)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* subtle film grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .7 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  padding:18px var(--pad-x);
+  display:flex;align-items:center;justify-content:space-between;
+  mix-blend-mode:difference;
+  transition: padding .35s ease;
+}
+.nav.condensed{padding:10px var(--pad-x)}
+.nav-mark{
+  font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:-.01em;
+  color:#fff;
+}
+.nav-mark em{font-style:italic;font-weight:400;color:#fff}
+.nav-links{display:none;gap:28px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.nav-links a{position:relative;padding:4px 0;opacity:.85;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:#fff;
+  transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-dates{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#fff;opacity:.8}
+@media (min-width: 880px){
+  .nav-links{display:flex}
+}
+
+/* mobile menu button */
+.nav-toggle{display:flex;flex-direction:column;gap:5px;padding:8px;color:#fff}
+.nav-toggle span{display:block;width:22px;height:1px;background:#fff}
+@media (min-width: 880px){.nav-toggle{display:none}}
+
+.mobile-sheet{
+  position:fixed;inset:0;z-index:70;background:var(--ink);
+  padding:80px var(--pad-x) 40px;
+  transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.2,1);
+  display:flex;flex-direction:column;
+}
+.mobile-sheet.open{transform:translateY(0)}
+.mobile-sheet ol{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:24px}
+.mobile-sheet ol li{border-top:1px solid var(--hairline);padding:18px 0}
+.mobile-sheet ol li:last-child{border-bottom:1px solid var(--hairline)}
+.mobile-sheet a{display:flex;align-items:baseline;justify-content:space-between;font-family:var(--display);font-size:28px;letter-spacing:-.02em}
+.mobile-sheet a span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.14em;opacity:.5}
+.mobile-close{position:absolute;top:18px;right:var(--pad-x);font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;padding:120px var(--pad-x) 40px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
+}
+.hero-meta{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim);
+  gap:16px;
+}
+.hero-meta .block{display:flex;flex-direction:column;gap:6px}
+.hero-meta .label{color:var(--cream-ghost)}
+.hero-meta .val{color:var(--cream)}
+
+.hero-title{
+  font-family:var(--display);font-weight:400;
+  font-size: clamp(72px, 22vw, 340px);
+  line-height:.82;letter-spacing:-.055em;
+  color:var(--cream);
+  margin-top: clamp(24px, 6vh, 80px);
+  position:relative;
+}
+.hero-title .dot{color:var(--burgundy)}
+.hero-title .em{font-style:italic;font-weight:300;color:var(--gold)}
+
+.hero-sub{
+  display:grid;grid-template-columns:1fr;gap:24px;
+  margin-top: clamp(24px, 5vh, 56px);
+  padding-top:24px;border-top:1px solid var(--hairline);
+}
+.hero-sub .lead{
+  font-family:var(--display);font-weight:300;
+  font-size: clamp(20px, 2.6vw, 30px);
+  line-height:1.15;letter-spacing:-.015em;
+  max-width: 22ch;
+}
+.hero-sub .lead em{color:var(--gold);font-weight:300}
+.hero-sub .rail{
+  display:flex;flex-direction:column;gap:14px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+}
+.hero-sub .rail .row{display:flex;justify-content:space-between;gap:20px;padding:10px 0;border-bottom:1px solid var(--hairline-2)}
+.hero-sub .rail .row span:first-child{color:var(--cream-ghost)}
+.hero-sub .rail .row span:last-child{color:var(--cream)}
+
+@media (min-width:720px){
+  .hero-sub{grid-template-columns: 1.2fr .8fr;gap: clamp(40px, 6vw, 120px);align-items:end}
+}
+
+.hero-scroll{
+  position:absolute;left:var(--pad-x);bottom:16px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream-ghost);display:flex;align-items:center;gap:10px;
+}
+.hero-scroll .line{width:40px;height:1px;background:var(--cream-ghost);position:relative;overflow:hidden}
+.hero-scroll .line::after{content:"";position:absolute;inset:0;background:var(--gold);animation:scrollpulse 2.4s ease-in-out infinite}
+@keyframes scrollpulse{0%{transform:translateX(-100%)}60%{transform:translateX(100%)}100%{transform:translateX(100%)}}
+
+/* ---------- ticker ---------- */
+.ticker{
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  overflow:hidden;white-space:nowrap;
+  background:var(--ink);
+  position:relative;
+}
+.ticker-track{
+  display:inline-flex;gap:48px;
+  padding:22px 0;
+  animation: slide 42s linear infinite;
+  will-change:transform;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{
+  font-family:var(--display);font-weight:400;
+  font-size: clamp(28px, 5vw, 56px);
+  letter-spacing:-.02em;
+  color:var(--cream);
+  display:inline-flex;align-items:center;gap:48px;
+}
+.ticker-item em{color:var(--gold);font-style:italic;font-weight:300}
+.ticker-item::after{
+  content:"";width:10px;height:10px;border-radius:50%;
+  background:var(--burgundy);display:inline-block;
+}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- section shell ---------- */
+.section{
+  padding: clamp(80px, 12vh, 160px) var(--pad-x);
+  position:relative;
+  border-bottom:1px solid var(--hairline-2);
+}
+.section-head{
+  display:grid;grid-template-columns:auto 1fr;gap:18px 24px;align-items:start;
+  margin-bottom: clamp(40px, 7vh, 80px);
+}
+.sec-num{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--cream-ghost);
+  padding-top:14px;
+}
+.sec-label{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding-top:14px;
+  grid-column:2;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-label::before{content:"";width:6px;height:6px;background:var(--gold);border-radius:50%}
+.sec-title{
+  grid-column:2;
+  font-family:var(--display);font-weight:400;
+  font-size: clamp(44px, 8vw, 128px);
+  line-height:.9;letter-spacing:-.035em;
+  max-width:18ch;
+}
+.sec-title em{font-style:italic;font-weight:300;color:var(--gold)}
+.sec-title .bg{color:var(--burgundy)}
+.sec-kicker{
+  grid-column:2;
+  margin-top:18px;
+  max-width:56ch;
+  font-size: clamp(15px, 1.6vw, 18px);
+  color:var(--cream-dim);
+  line-height:1.6;
+}
+@media (min-width: 900px){
+  .section-head{grid-template-columns:120px 1fr;gap:0 40px}
+  .sec-num{font-size:13px}
+}
+
+/* field-note dateline */
+.dateline{
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-ghost);
+  display:flex;flex-wrap:wrap;gap:14px;
+  padding:10px 0;border-top:1px solid var(--hairline-2);border-bottom:1px solid var(--hairline-2);
+  margin-bottom:28px;
+}
+.dateline .sep{color:var(--burgundy)}
+
+/* ---------- 02 vibe ---------- */
+.vibe-grid{
+  display:grid;grid-template-columns:1fr;gap:var(--grid-gap);
+}
+@media (min-width:780px){.vibe-grid{grid-template-columns:repeat(3,1fr)}}
+.vibe-card{
+  padding:32px 28px;
+  border:1px solid var(--hairline);
+  background:linear-gradient(180deg, rgba(201,168,106,0.02), transparent);
+  display:flex;flex-direction:column;gap:16px;
+  position:relative;min-height:280px;
+  transition:border-color .4s, transform .4s;
+}
+.vibe-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.vibe-card .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--burgundy)}
+.vibe-card h3{
+  font-family:var(--display);font-weight:400;
+  font-size:28px;line-height:1;letter-spacing:-.02em;
+}
+.vibe-card h3 em{font-style:italic;color:var(--gold);font-weight:300}
+.vibe-card p{color:var(--cream-dim);font-size:15px;line-height:1.6}
+.vibe-card .corner{position:absolute;top:16px;right:16px;font-family:var(--mono);font-size:10px;color:var(--cream-ghost);letter-spacing:.2em}
+
+/* ---------- 03 eats / 04 nights — card grid ---------- */
+.cards{
+  display:grid;grid-template-columns:1fr;gap:var(--grid-gap);
+}
+@media (min-width:640px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1080px){.cards{grid-template-columns:repeat(3,1fr)}}
+
+.card{
+  position:relative;overflow:hidden;
+  border:1px solid var(--hairline);
+  background:var(--ink-2);
+  aspect-ratio: 3/4;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:24px;
+  transition:border-color .5s, transform .6s cubic-bezier(.2,.8,.2,1);
+  isolation:isolate;
+}
+.card .swatch{
+  position:absolute;inset:0;z-index:-2;
+  background: var(--swatch, linear-gradient(140deg,#2a1418,#0a0a0a 60%));
+}
+.card .swatch::before{
+  content:"";position:absolute;inset:0;
+  background-image: repeating-linear-gradient(135deg, rgba(244,237,227,.035) 0 2px, transparent 2px 16px);
+  opacity:.9;
+}
+.card .swatch::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 30%, rgba(0,0,0,.75) 100%);
+}
+.card .placeholder-tag{
+  position:absolute;top:18px;left:18px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  color:var(--cream-ghost);text-transform:uppercase;
+  z-index:1;
+}
+.card .num{
+  position:absolute;top:18px;right:18px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gold);z-index:1;
+}
+.card h4{
+  font-family:var(--display);font-weight:400;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height:.95;letter-spacing:-.02em;
+  color:var(--cream);
+  z-index:1;
+}
+.card h4 em{font-style:italic;color:var(--gold);font-weight:300}
+.card .meta{
+  display:flex;gap:14px;flex-wrap:wrap;margin-top:12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);
+  z-index:1;
+}
+.card .meta span{position:relative}
+.card .meta span + span::before{content:"/";position:absolute;left:-9px;color:var(--burgundy)}
+.card .reveal{
+  max-height:0;overflow:hidden;
+  transition:max-height .6s cubic-bezier(.2,.8,.2,1), opacity .4s .1s;
+  opacity:0;
+  z-index:1;
+}
+.card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.card:hover .reveal, .card.open .reveal{max-height:200px;opacity:1;margin-top:14px}
+.card .reveal p{font-size:14px;line-height:1.55;color:var(--cream-dim);max-width:36ch}
+.card .reveal .order{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--gold);margin-top:10px;
+}
+
+/* feature card (magic city) */
+.card.feature{
+  aspect-ratio: auto;
+  grid-column:1 / -1;
+  min-height: 420px;
+  padding: clamp(28px, 4vw, 48px);
+}
+.card.feature h4{font-size: clamp(40px, 6vw, 84px);line-height:.88}
+.card.feature .swatch{
+  background: radial-gradient(ellipse at 30% 20%, rgba(122,31,43,.8), transparent 60%), radial-gradient(ellipse at 80% 80%, rgba(201,168,106,.25), transparent 55%), #0a0a0a;
+}
+.card.feature .chrome-bar{
+  position:absolute;left:0;right:0;top:40%;height:1px;background:linear-gradient(90deg,transparent,var(--chrome),transparent);
+  z-index:1;opacity:.6;
+}
+
+@media (min-width:640px){.card.feature{grid-column: span 2}}
+@media (min-width:1080px){.card.feature{grid-column: span 3}}
+
+/* ---------- 05 coke special ---------- */
+.coke{
+  display:grid;grid-template-columns:1fr;gap: clamp(28px, 4vw, 60px);
+  align-items:stretch;
+}
+@media (min-width: 900px){.coke{grid-template-columns: 1.1fr .9fr}}
+.coke-lede{
+  padding: clamp(28px, 4vw, 56px);
+  border:1px solid var(--hairline);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(122,31,43,.35), transparent 55%),
+    linear-gradient(180deg, #140608, #0a0a0a 80%);
+  position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:420px;
+}
+.coke-lede .plate{
+  position:absolute;right:-60px;bottom:-60px;width:360px;height:360px;
+  border:1px solid rgba(201,168,106,.25);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-style:italic;font-size:84px;color:rgba(201,168,106,.22);
+}
+.coke-lede .plate::before{
+  content:"";position:absolute;inset:24px;border:1px solid rgba(201,168,106,.18);border-radius:50%;
+}
+.coke-lede h3{
+  font-family:var(--display);font-weight:400;
+  font-size: clamp(40px, 5.2vw, 72px);line-height:.9;letter-spacing:-.03em;
+  position:relative;z-index:1;
+}
+.coke-lede h3 em{font-style:italic;color:var(--gold);font-weight:300}
+.coke-lede p{color:var(--cream-dim);max-width:38ch;position:relative;z-index:1;font-size:16px;line-height:1.6}
+.coke-lede .tag{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--burgundy);text-transform:uppercase}
+
+.coke-list{display:flex;flex-direction:column;gap:2px}
+.coke-list .item{
+  display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:baseline;
+  padding:22px 0;border-top:1px solid var(--hairline);
+  transition:padding-left .3s;
+}
+.coke-list .item:last-child{border-bottom:1px solid var(--hairline)}
+.coke-list .item:hover{padding-left:8px}
+.coke-list .item .n{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--cream-ghost)}
+.coke-list .item h5{font-family:var(--display);font-weight:400;font-size: clamp(22px, 2.4vw, 28px);letter-spacing:-.015em;line-height:1.1}
+.coke-list .item h5 em{font-style:italic;color:var(--gold);font-weight:300}
+.coke-list .item p{grid-column:2;font-size:14px;color:var(--cream-dim);margin-top:6px;max-width:48ch}
+.coke-list .item .t{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--gold);white-space:nowrap}
+
+/* ---------- 06 beltline ---------- */
+.belt-grid{
+  display:grid;grid-template-columns:1fr;gap:var(--grid-gap);
+}
+@media (min-width:780px){.belt-grid{grid-template-columns:repeat(6,1fr)}}
+.belt-tile{
+  border:1px solid var(--hairline);
+  padding:26px 22px;min-height:220px;
+  display:flex;flex-direction:column;justify-content:space-between;gap:16px;
+  background:var(--ink-2);
+  transition:background .3s, border-color .3s, transform .4s;
+  position:relative;overflow:hidden;
+}
+.belt-tile:hover{background:var(--ink-3);border-color:var(--gold);transform:translateY(-2px)}
+.belt-tile .head{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cream-ghost);text-transform:uppercase}
+.belt-tile .head .time{color:var(--gold)}
+.belt-tile h5{
+  font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:-.015em;line-height:1.05;
+}
+.belt-tile h5 em{font-style:italic;color:var(--gold);font-weight:300}
+.belt-tile p{color:var(--cream-dim);font-size:13.5px;line-height:1.55}
+.belt-tile.wide{grid-column: span 1}
+@media (min-width:780px){
+  .belt-tile:nth-child(1){grid-column: span 4; min-height:280px}
+  .belt-tile:nth-child(2){grid-column: span 2}
+  .belt-tile:nth-child(3){grid-column: span 2}
+  .belt-tile:nth-child(4){grid-column: span 2}
+  .belt-tile:nth-child(5){grid-column: span 2}
+  .belt-tile:nth-child(6){grid-column: span 3}
+  .belt-tile:nth-child(7){grid-column: span 3}
+}
+.belt-tile:nth-child(1) h5{font-size: clamp(32px, 4vw, 48px)}
+
+/* ---------- 07 playlist ---------- */
+.play{
+  display:grid;grid-template-columns:1fr;gap: clamp(24px, 3vw, 40px);
+}
+@media (min-width: 900px){.play{grid-template-columns: .9fr 1.1fr}}
+.play-frame{
+  border:1px solid var(--hairline);padding: clamp(28px, 3.5vw, 44px);
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(244,237,227,.02) 3px 4px),
+    #0d0d0d;
+  display:flex;flex-direction:column;justify-content:space-between;gap:36px;
+  min-height:360px;
+}
+.play-frame .cover{
+  width:100%;aspect-ratio:1/1;max-width:320px;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(201,168,106,.35), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(122,31,43,.55), transparent 60%),
+    #121212;
+  border:1px solid var(--hairline);
+  position:relative;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:flex-start;padding:20px;
+}
+.play-frame .cover::before{
+  content:"";position:absolute;inset:12%;border-radius:50%;
+  background:
+    repeating-radial-gradient(circle, rgba(244,237,227,.05) 0 1px, transparent 1px 4px),
+    radial-gradient(circle, #1a1a1a 0 30%, #0a0a0a 60%);
+}
+.play-frame .cover::after{
+  content:"";position:absolute;top:50%;left:50%;width:14%;aspect-ratio:1;border-radius:50%;
+  background:var(--burgundy);transform:translate(-50%,-50%);
+  box-shadow:0 0 0 6px #0a0a0a, 0 0 0 7px rgba(201,168,106,.4);
+}
+.play-frame .cover span{
+  position:relative;z-index:1;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cream);text-transform:uppercase;
+}
+.play-frame h4{font-family:var(--display);font-size:32px;font-weight:400;letter-spacing:-.02em;line-height:1}
+.play-frame h4 em{font-style:italic;color:var(--gold);font-weight:300}
+.play-frame .meta{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--cream-ghost);text-transform:uppercase;display:flex;gap:16px;flex-wrap:wrap}
+
+.tracks{display:flex;flex-direction:column}
+.track{
+  display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:center;
+  padding:16px 0;border-top:1px solid var(--hairline);
+  transition:background .3s, padding-left .3s;cursor:pointer;
+}
+.track:last-child{border-bottom:1px solid var(--hairline)}
+.track:hover{padding-left:10px}
+.track:hover .play-dot{background:var(--gold)}
+.track .n{font-family:var(--mono);font-size:11px;color:var(--cream-ghost);letter-spacing:.1em}
+.track .title{font-family:var(--display);font-size:18px;font-weight:400;letter-spacing:-.01em}
+.track .title em{font-style:italic;color:var(--gold);font-weight:300}
+.track .artist{font-size:13px;color:var(--cream-dim);margin-top:2px;font-family:var(--body)}
+.track .t{font-family:var(--mono);font-size:11px;color:var(--cream-ghost)}
+.play-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--burgundy);margin-right:8px;vertical-align:middle;transition:background .3s}
+
+/* embed */
+.embed-wrap{display:flex;flex-direction:column;gap:14px;min-width:0}
+.embed-tabs{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 12px;border:1px solid var(--hairline);background:var(--ink-2);
+}
+.embed-tab{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream-ghost);padding:6px 10px;border:1px solid transparent;transition:all .25s;
+}
+.embed-tab.active{color:var(--cream);border-color:var(--gold)}
+.embed-tab:hover{color:var(--cream)}
+.embed-meta{
+  margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+  color:var(--cream-ghost);text-transform:uppercase;
+}
+.embed-stage{position:relative;border:1px solid var(--hairline);background:#0d0d0d;min-height:520px}
+.embed-iframe{display:none;width:100%;border:0}
+.embed-iframe.active{display:block}
+
+/* ---------- 08 how to move ---------- */
+.logistics{
+  display:grid;grid-template-columns:1fr;gap:var(--grid-gap);
+}
+@media (min-width: 780px){.logistics{grid-template-columns:repeat(2,1fr)}}
+@media (min-width: 1080px){.logistics{grid-template-columns:repeat(4,1fr)}}
+.log-card{
+  border:1px solid var(--hairline);padding:26px 24px;min-height:260px;
+  display:flex;flex-direction:column;gap:14px;
+  background:var(--ink-2);
+  transition:border-color .3s,transform .4s;
+}
+.log-card:hover{border-color:var(--burgundy);transform:translateY(-2px)}
+.log-card .tag{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--burgundy);text-transform:uppercase}
+.log-card h5{font-family:var(--display);font-size:26px;font-weight:400;letter-spacing:-.015em;line-height:1}
+.log-card h5 em{font-style:italic;color:var(--gold);font-weight:300}
+.log-card p{color:var(--cream-dim);font-size:14px;line-height:1.6}
+.log-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--cream-dim)}
+.log-card ul li{padding-left:14px;position:relative}
+.log-card ul li::before{content:"";position:absolute;left:0;top:.65em;width:6px;height:1px;background:var(--gold)}
+.log-card .verdict{
+  margin-top:auto;padding-top:14px;border-top:1px solid var(--hairline);
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+}
+.log-card .verdict strong{color:var(--gold);font-weight:500}
+
+/* ---------- footer ---------- */
+.foot{
+  padding: 80px var(--pad-x) 40px;border-top:1px solid var(--hairline);
+  display:grid;grid-template-columns:1fr;gap:40px;
+}
+@media (min-width: 780px){.foot{grid-template-columns: 1.4fr 1fr;align-items:end}}
+.foot .big{
+  font-family:var(--display);font-weight:400;
+  font-size: clamp(48px, 10vw, 160px);
+  letter-spacing:-.045em;line-height:.85;
+}
+.foot .big em{font-style:italic;color:var(--gold);font-weight:300}
+.foot .big .dot{color:var(--burgundy)}
+.foot .right{display:flex;flex-direction:column;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-dim)}
+.foot .right .row{display:flex;justify-content:space-between;border-bottom:1px solid var(--hairline-2);padding:8px 0}
+.foot .right .row span:last-child{color:var(--cream)}
+
+/* ---------- reveal on scroll ---------- */
+.r{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.r.in{opacity:1;transform:none}
+
+/* ---------- small utilities ---------- */
+.rule{height:1px;background:var(--hairline);margin: clamp(40px,6vh,80px) 0}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-mark">atlanna<em>.</em></a>
+  <div class="nav-links">
+    <a href="#vibe">01 · vibe</a>
+    <a href="#eats">02 · eats</a>
+    <a href="#nights">03 · nights</a>
+    <a href="#coke">04 · coke</a>
+    <a href="#beltline">05 · beltline</a>
+    <a href="#play">06 · play</a>
+    <a href="#move">07 · move</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-sheet" id="sheet">
+  <button class="mobile-close" id="sheetClose">CLOSE ×</button>
+  <div style="font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--cream-ghost);text-transform:uppercase">INDEX / APR 29 → MAY 03</div>
+  <ol>
+    <li><a href="#vibe" data-close><span>01</span><span>the vibe</span></a></li>
+    <li><a href="#eats" data-close><span>02</span><span>eastside eats</span></a></li>
+    <li><a href="#nights" data-close><span>03</span><span>moves &amp; nights</span></a></li>
+    <li><a href="#coke" data-close><span>04</span><span>world of coca-cola</span></a></li>
+    <li><a href="#beltline" data-close><span>05</span><span>beltline &amp; beyond</span></a></li>
+    <li><a href="#play" data-close><span>06</span><span>the playlist</span></a></li>
+    <li><a href="#move" data-close><span>07</span><span>how to move</span></a></li>
+  </ol>
+</div>
+
+<!-- ============ 00 HERO ============ -->
+<header class="hero" id="top">
+  <div class="hero-meta">
+    <div class="block">
+      <span class="label">filed from</span>
+      <span class="val">east atlanta / zone 6</span>
+    </div>
+    <div class="block" style="text-align:right">
+      <span class="label">dispatch no.</span>
+      <span class="val">№ 001 / iv.xxvi</span>
+    </div>
+  </div>
+
+  <h1 class="hero-title">atlanna<span class="dot">.</span></h1>
+
+  <div class="hero-sub">
+    <p class="lead">five days, two grown folks, and a city that raised <em>one of us.</em> not a trip — a <em>return.</em></p>
+    <div class="rail">
+      <div class="row"><span>arrive</span><span>wed 04.29 · 6:42p</span></div>
+      <div class="row"><span>depart</span><span>sun 05.03 · 11:15a</span></div>
+      <div class="row"><span>base</span><span>old fourth ward</span></div>
+      <div class="row"><span>dress code</span><span>clean. always.</span></div>
+    </div>
+  </div>
+
+  <div class="hero-scroll"><span>scroll</span><span class="line"></span><span>begin</span></div>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- ============ 01 VIBE ============ -->
+<section class="section" id="vibe">
+  <div class="section-head r">
+    <div class="sec-num">01 —</div>
+    <div class="sec-label">the vibe · field notes</div>
+    <h2 class="sec-title">grown. <em>sexy.</em> eastside <span class="bg">first.</span></h2>
+    <p class="sec-kicker">this is not a tourist trip. no hop-on bus. no lenox square. we're chasing the version of the city that shows up at 11pm in a linen set and knows three people at the door. the rest is scaffolding.</p>
+  </div>
+
+  <div class="dateline r">
+    <span>filed</span><span>04.29 / 11:08p</span>
+    <span class="sep">/</span>
+    <span>ponce de leon ave ne</span>
+    <span class="sep">/</span>
+    <span>mood — cashmere over t-shirt</span>
+  </div>
+
+  <div class="vibe-grid">
+    <div class="vibe-card r">
+      <span class="corner">i.</span>
+      <span class="k">rule one</span>
+      <h3>don't <em>perform</em> the city.</h3>
+      <p>atlanna's always been a city that clocks you on sight. come correct, keep it quiet, let the room do the work. nobody here is impressed by a reservation.</p>
+    </div>
+    <div class="vibe-card r">
+      <span class="corner">ii.</span>
+      <span class="k">rule two</span>
+      <h3>eat like it's a <em>ritual.</em></h3>
+      <p>dinner is not fuel. dinner is the evening. two hours minimum, phones face down. the third drink is where the trip actually starts.</p>
+    </div>
+    <div class="vibe-card r">
+      <span class="corner">iii.</span>
+      <span class="k">rule three</span>
+      <h3>the <em>east side</em> leads.</h3>
+      <p>we anchor east of the connector. old fourth ward, reynoldstown, eav, kirkwood. cross to the west for a specific meal or a specific room, not for the hell of it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 EATS ============ -->
+<section class="section" id="eats">
+  <div class="section-head r">
+    <div class="sec-num">02 —</div>
+    <div class="sec-label">eastside eats · dinner first</div>
+    <h2 class="sec-title">eat <em>slow.</em> tip <span class="bg">heavy.</span></h2>
+    <p class="sec-kicker">the room matters as much as the plate. these are the tables we'd cancel other things for. book ahead where noted. dress like you meant to be there.</p>
+  </div>
+
+  <div class="cards">
+    <article class="card r" data-swatch="1" tabindex="0">
+      <div class="swatch" style="background:linear-gradient(140deg,#2a1418,#0a0a0a 60%)"></div>
+      <span class="placeholder-tag">[ room · low light ]</span>
+      <span class="num">02.01</span>
+      <h4>bread &amp; <em>butterfly</em></h4>
+      <div class="meta"><span>inman park</span><span>french</span><span>$$$</span></div>
+      <div class="reveal">
+        <p>tiled banquettes, natural wine, the bavette everyone pretends to discover for the first time. sit at the counter if you can, linger like rent is free.</p>
+        <div class="order">order — bavette · gem salad · second bottle</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:radial-gradient(circle at 70% 30%, #3a1a22, #0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ plate · close crop ]</span>
+      <span class="num">02.02</span>
+      <h4>staplehouse</h4>
+      <div class="meta"><span>old fourth ward</span><span>tasting</span><span>$$$$</span></div>
+      <div class="reveal">
+        <p>still the quietest flex in the city. the tasting menu pays off every dollar. anniversary-grade without the anniversary energy.</p>
+        <div class="order">reserve — six weeks out, minimum</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:linear-gradient(180deg,#1a1410,#0a0a0a)"></div>
+      <span class="placeholder-tag">[ pass · hands in motion ]</span>
+      <span class="num">02.03</span>
+      <h4>kamayan <em>atl</em></h4>
+      <div class="meta"><span>doraville</span><span>filipino</span><span>$$</span></div>
+      <div class="reveal">
+        <p>hands-on feast on banana leaves. messy, communal, impossible to do sadly. worth the drive up buford highway — which is the real dining district anyway.</p>
+        <div class="order">order — the full boodle / bring an appetite</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:radial-gradient(circle at 20% 80%, #2d1e12, #0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ bar · amber glow ]</span>
+      <span class="num">02.04</span>
+      <h4>miller union</h4>
+      <div class="meta"><span>west midtown</span><span>southern</span><span>$$$</span></div>
+      <div class="reveal">
+        <p>the farm-egg in celery cream is worth crossing the connector. go early, sit at the kitchen counter, order everything with butter in the name.</p>
+        <div class="order">order — farm egg · biscuits · whatever's on the board</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:linear-gradient(140deg,#101820,#0a0a0a)"></div>
+      <span class="placeholder-tag">[ booth · late service ]</span>
+      <span class="num">02.05</span>
+      <h4>ticonderoga <em>club</em></h4>
+      <div class="meta"><span>krog street</span><span>cocktails + supper</span><span>$$$</span></div>
+      <div class="reveal">
+        <p>cocktail bar pretending to be a supper club pretending to be a yacht club. order the ticonderoga cup and a plate of whatever's on special. don't rush it.</p>
+        <div class="order">order — ticonderoga cup · oysters · rye toast</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:radial-gradient(circle at 60% 40%, #2a1a0c, #0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ window · morning light ]</span>
+      <span class="num">02.06</span>
+      <h4>home grown</h4>
+      <div class="meta"><span>reynoldstown</span><span>brunch</span><span>$$</span></div>
+      <div class="reveal">
+        <p>the comfy chicken biscuit. no notes. get there before 10 or accept the line as part of the process.</p>
+        <div class="order">order — comfy chicken · side of grits · black coffee</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 03 NIGHTS ============ -->
+<section class="section" id="nights">
+  <div class="section-head r">
+    <div class="sec-num">03 —</div>
+    <div class="sec-label">moves &amp; nights · after ten</div>
+    <h2 class="sec-title">the <em>room</em> decides.</h2>
+    <p class="sec-kicker">nightlife in this city isn't a bar crawl — it's a sequence. one room warms you up, one room ends you. magic city is the crown. everything else is prologue or dénouement.</p>
+  </div>
+
+  <div class="cards">
+
+    <article class="card feature r" tabindex="0">
+      <div class="swatch"></div>
+      <div class="chrome-bar"></div>
+      <span class="placeholder-tag">[ marquee · red glow ]</span>
+      <span class="num">03.01 · the crown</span>
+      <h4>magic <em>city.</em></h4>
+      <div class="meta"><span>downtown</span><span>monday is the night</span><span>dress code: clean</span><span>cash in hand</span></div>
+      <div class="reveal">
+        <p style="max-width:52ch">the institution. monday night magic is the correct answer — monday's the industry night, the room is its best self, the hip-hop is loud and right. arrive by 11, tip the man at the door, sit where you can see the whole floor. leave before you want to.</p>
+        <div class="order">rule — respect the room, it's been here longer than you</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:linear-gradient(160deg,#2c1a1e,#0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ patio · string lights ]</span>
+      <span class="num">03.02</span>
+      <h4>the <em>lawrence</em></h4>
+      <div class="meta"><span>midtown</span><span>cocktails</span><span>pre-dinner</span></div>
+      <div class="reveal">
+        <p>reliable start to any night. order a martini like you mean it and let the bartender cook.</p>
+        <div class="order">order — martini · whatever they push back</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:radial-gradient(circle at 50% 50%, #2a1c12, #0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ booth · velvet ]</span>
+      <span class="num">03.03</span>
+      <h4>dear, <em>margaret</em></h4>
+      <div class="meta"><span>reynoldstown</span><span>wine bar</span><span>late</span></div>
+      <div class="reveal">
+        <p>appalachian wine bar that happens to make the best late-night food on the east side. run the list with whoever's pouring.</p>
+        <div class="order">order — chef's pick · natural red · stay</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:linear-gradient(140deg,#1a1222,#0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ floor · blurred motion ]</span>
+      <span class="num">03.04</span>
+      <h4>MJQ <em>concourse</em></h4>
+      <div class="meta"><span>ponce</span><span>dance</span><span>late late</span></div>
+      <div class="reveal">
+        <p>basement. sweat. no pictures. if you have to ask what to wear you're already late.</p>
+        <div class="order">rule — cash · no laptops · be cool</div>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:radial-gradient(ellipse at 30% 20%, #2a1420, #0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ tables · amber low ]</span>
+      <span class="num">03.05</span>
+      <h4>el <em>malo</em></h4>
+      <div class="meta"><span>grant park</span><span>tacos + mezcal</span><span>10p+</span></div>
+      <div class="reveal">
+        <p>second-floor patio, mezcal list that takes itself seriously, the al pastor is church. late-night pivot that feels like a secret even though it isn't.</p>
+        <div class="order">order — al pastor · derecho mezcal · second round</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ 04 COKE ============ -->
+<section class="section" id="coke">
+  <div class="section-head r">
+    <div class="sec-num">04 —</div>
+    <div class="sec-label">world of coca-cola · inside job</div>
+    <h2 class="sec-title">the <em>company</em> town.</h2>
+    <p class="sec-kicker">you work there. the badge is in the drawer. this isn't a tour — it's a homecoming in reverse. here's how to run it like a local who happens to have keys.</p>
+  </div>
+
+  <div class="dateline r">
+    <span>filed</span><span>04.30 / 10:20a</span><span class="sep">/</span>
+    <span>pemberton place</span><span class="sep">/</span>
+    <span>coffee in hand · badge visible</span>
+  </div>
+
+  <div class="coke">
+    <div class="coke-lede r">
+      <span class="tag">personal · non-transferable</span>
+      <h3>your <em>city.</em> your <em>company.</em> one morning to walk it like both.</h3>
+      <p>skip the line. the employee entrance tells a different story than the tourist one — and bringing her through it is a flex that costs nothing and lands hard. keep it morning, keep it short, dinner's already booked.</p>
+      <div class="plate">Co.</div>
+    </div>
+
+    <div class="coke-list">
+      <div class="item r">
+        <span class="n">i.</span>
+        <div>
+          <h5>employee <em>entrance</em> first.</h5>
+          <p>walk her in the way you walk in every tuesday. the bootleg-tour energy is the entire point.</p>
+        </div>
+        <span class="t">9:30a</span>
+      </div>
+      <div class="item r">
+        <span class="n">ii.</span>
+        <div>
+          <h5>the <em>vault.</em> yes, really.</h5>
+          <p>don't skip it because you've seen it. see it with her. the room still hits.</p>
+        </div>
+        <span class="t">10:15a</span>
+      </div>
+      <div class="item r">
+        <span class="n">iii.</span>
+        <div>
+          <h5>tasting room, <em>slow lap.</em></h5>
+          <p>beverly first for the bit. then the real international flight. pace yourself — there's 100+.</p>
+        </div>
+        <span class="t">10:45a</span>
+      </div>
+      <div class="item r">
+        <span class="n">iv.</span>
+        <div>
+          <h5>pemberton's <em>original.</em></h5>
+          <p>the handwritten formula case. stand there a minute. it's the reason we're here.</p>
+        </div>
+        <span class="t">11:20a</span>
+      </div>
+      <div class="item r">
+        <span class="n">v.</span>
+        <div>
+          <h5>out through <em>centennial.</em></h5>
+          <p>cross the park, skip the aquarium line (we're not doing it), head to lunch at slutty vegan or home grown depending on the room.</p>
+        </div>
+        <span class="t">12:15p</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 BELTLINE ============ -->
+<section class="section" id="beltline">
+  <div class="section-head r">
+    <div class="sec-num">05 —</div>
+    <div class="sec-label">beltline &amp; beyond · daylight</div>
+    <h2 class="sec-title">walk it. <em>slow.</em></h2>
+    <p class="sec-kicker">the beltline is a thesis statement about what this city wants to be. the eastside trail is the one. eight miles of mural, food, patio, and the occasional scooter to dodge. built for afternoons that turn into evenings.</p>
+  </div>
+
+  <div class="belt-grid">
+    <div class="belt-tile r">
+      <div class="head"><span>05.01 · the spine</span><span class="time">all day</span></div>
+      <h5>eastside trail, <em>ponce to reynoldstown</em></h5>
+      <p>start at krog street market, walk south. ping-pong tables, murals that change every season, ponce city market on your right if you want to lose an hour. the correct pace is slow.</p>
+    </div>
+
+    <div class="belt-tile r">
+      <div class="head"><span>05.02</span><span class="time">1 hr</span></div>
+      <h5>krog <em>tunnel</em></h5>
+      <p>the graffiti is the city. bring a film camera if you have one.</p>
+    </div>
+
+    <div class="belt-tile r">
+      <div class="head"><span>05.03</span><span class="time">90 min</span></div>
+      <h5>ponce <em>city market</em></h5>
+      <p>skip the food hall unless you need the bathroom. the rooftop is the move.</p>
+    </div>
+
+    <div class="belt-tile r">
+      <div class="head"><span>05.04</span><span class="time">2 hr</span></div>
+      <h5>piedmont <em>park</em></h5>
+      <p>blanket. speaker low. skyline from the oak hill. sunday behavior.</p>
+    </div>
+
+    <div class="belt-tile r">
+      <div class="head"><span>05.05</span><span class="time">morning</span></div>
+      <h5>oakland <em>cemetery</em></h5>
+      <p>quieter than it sounds. sunrise walk, then coffee at six feet under across the street. pay respects on maynard's stone.</p>
+    </div>
+
+    <div class="belt-tile r">
+      <div class="head"><span>05.06 · the neighborhoods</span><span class="time">wander</span></div>
+      <h5>old fourth <em>ward</em> · reynoldstown · kirkwood</h5>
+      <p>three neighborhoods that reward walking. porches, corner stores, bungalows with intentional paint jobs. you'll know you found it when the blocks stop looking staged.</p>
+    </div>
+
+    <div class="belt-tile r">
+      <div class="head"><span>05.07 · the long walk</span><span class="time">half-day</span></div>
+      <h5>edgewood <em>ave</em> after dark</h5>
+      <p>sister louisa's for the start, joystick for the middle, the corner at boulevard for the end. don't drive — walk it, it's the whole point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 PLAYLIST ============ -->
+<section class="section" id="play">
+  <div class="section-head r">
+    <div class="sec-num">06 —</div>
+    <div class="sec-label">the playlist · vibe setter</div>
+    <h2 class="sec-title">soundtrack <em>for the</em> drive.</h2>
+    <p class="sec-kicker">two hours, built for the rental car between the airport and the first dinner. 808s, a little neo-soul, one outkast sermon, a future deep cut to settle the nerves.</p>
+  </div>
+
+  <div class="play">
+    <div class="play-frame r">
+      <div class="cover"><span>atlanna · 001</span></div>
+      <div>
+        <h4>east of the <em>connector</em></h4>
+        <div class="meta" style="margin-top:10px"><span>spotify</span><span>curated 04.26</span><span>press play</span></div>
+      </div>
+    </div>
+
+    <div class="embed-wrap r">
+      <div class="embed-tabs">
+        <button class="embed-tab active" data-svc="spotify">spotify</button>
+        <button class="embed-tab" data-svc="apple">apple music</button>
+        <span class="embed-meta">atlanna · 001 / east of the connector</span>
+      </div>
+      <div class="embed-stage">
+        <iframe
+          id="embed-spotify"
+          class="embed-iframe active"
+          style="border-radius:0"
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0XUsuxWHRQd?utm_source=generator&theme=0"
+          width="100%" height="520"
+          frameborder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          title="Spotify — east of the connector"></iframe>
+        <iframe
+          id="embed-apple"
+          class="embed-iframe"
+          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+          frameborder="0"
+          height="520"
+          style="width:100%;max-width:100%;overflow:hidden;background:transparent;"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/playlist/atlanta-hip-hop-essentials/pl.c87a93e12c0d4fb3a3766cdee08d1521"
+          loading="lazy"
+          title="Apple Music — east of the connector"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 HOW TO MOVE ============ -->
+<section class="section" id="move">
+  <div class="section-head r">
+    <div class="sec-num">07 —</div>
+    <div class="sec-label">how to move · logistics, not fluff</div>
+    <h2 class="sec-title">the city is <em>big.</em> move <span class="bg">smart.</span></h2>
+    <p class="sec-kicker">atlanna's an airport city with no subway worth the name. here's the honest math: when to uber, when to walk, when to drive, and when to just stay where you are.</p>
+  </div>
+
+  <div class="logistics">
+    <div class="log-card r">
+      <span class="tag">01 · default</span>
+      <h5>uber <em>or</em> lyft</h5>
+      <p>90% of your movement. surge is real on friday-saturday from 10p–2a. budget for it. tip like you tip at the barbershop.</p>
+      <div class="verdict">verdict — <strong>yes.</strong> almost always.</div>
+    </div>
+
+    <div class="log-card r">
+      <span class="tag">02 · rare</span>
+      <h5><em>marta</em></h5>
+      <p>exactly two times it's correct: airport → downtown on arrival, and a braves game at the battery — except that's the wrong stadium, never mind. just the airport run.</p>
+      <div class="verdict">verdict — <strong>arrival only.</strong></div>
+    </div>
+
+    <div class="log-card r">
+      <span class="tag">03 · for a day</span>
+      <h5>rental <em>car</em></h5>
+      <p>thursday, for buford highway + the west side run. return it by friday night. don't drive after 10p, don't park on ponce.</p>
+      <div class="verdict">verdict — <strong>one day only.</strong></div>
+    </div>
+
+    <div class="log-card r">
+      <span class="tag">04 · rules</span>
+      <h5>parking <em>notes</em></h5>
+      <ul>
+        <li>ponce city market garage — first hour free</li>
+        <li>magic city — valet only, no exceptions</li>
+        <li>edgewood — park on auburn, walk two blocks</li>
+        <li>anywhere downtown — assume $20+</li>
+      </ul>
+      <div class="verdict">verdict — <strong>when in doubt, uber.</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="big r">see you<br><em>soon</em><span class="dot">.</span></div>
+  <div class="right r">
+    <div class="row"><span>index</span><span>07 sections</span></div>
+    <div class="row"><span>dispatch</span><span>№ 001 / iv.xxvi</span></div>
+    <div class="row"><span>filed for</span><span>one man · one partner</span></div>
+    <div class="row"><span>from</span><span>east atlanta / zone 6</span></div>
+    <div class="row"><span>edition</span><span>spring twenty-six</span></div>
+    <div class="row" style="border:0;padding-top:28px"><span style="color:var(--cream-ghost)">© atlanna behave.</span><span style="color:var(--burgundy)">actually don't.</span></div>
+  </div>
+</footer>
+
+<script>
+  // --- ticker: duplicate content so loop is seamless
+  (function(){
+    const phrases = [
+      ['atlanna, behave.', ' actually don\'t.'],
+      ['eastside first.'],
+      ['this is not a', ' tourist trip.'],
+      ['world of coca-cola.', ' magic city.', ' in that order.'],
+      ['grown & sexy.', ' always.'],
+      ['filed from', ' zone six.'],
+      ['dinner is a', ' ritual.'],
+      ['no lenox.', ' no hop-on bus.']
+    ];
+    const t = document.getElementById('ticker');
+    const makeItem = (parts) => {
+      const el = document.createElement('span');
+      el.className = 'ticker-item';
+      el.innerHTML = parts.map((p,i)=> i%2===1 ? `<em>${p}</em>` : p).join('');
+      return el;
+    };
+    // Build twice for seamless loop
+    for(let rep=0; rep<2; rep++){
+      phrases.forEach(p => t.appendChild(makeItem(p)));
+    }
+  })();
+
+  // --- mobile sheet
+  const sheet = document.getElementById('sheet');
+  document.getElementById('navToggle').addEventListener('click', ()=> sheet.classList.add('open'));
+  document.getElementById('sheetClose').addEventListener('click', ()=> sheet.classList.remove('open'));
+  sheet.querySelectorAll('[data-close]').forEach(a => a.addEventListener('click', ()=> sheet.classList.remove('open')));
+
+  // --- condense nav on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) nav.classList.add('condensed');
+    else nav.classList.remove('condensed');
+  }, {passive:true});
+
+  // --- smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', e=>{
+      const id = a.getAttribute('href');
+      if(id.length>1){
+        const el = document.querySelector(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      }
+    });
+  });
+
+  // --- reveal on scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
+  document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+  // --- tap-to-expand cards on touch (hover doesn't work on mobile)
+  document.querySelectorAll('.card').forEach(c=>{
+    c.addEventListener('click', (e)=>{
+      if(window.matchMedia('(hover: none)').matches){
+        c.classList.toggle('open');
+      }
+    });
+  });
+
+  // --- embed tab switcher
+  document.querySelectorAll('.embed-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const svc = btn.dataset.svc;
+      document.querySelectorAll('.embed-tab').forEach(b => b.classList.toggle('active', b===btn));
+      document.querySelectorAll('.embed-iframe').forEach(f => f.classList.toggle('active', f.id === 'embed-' + svc));
+    });
+  });
+
+  // --- console love letter
+  console.log('%catlanna.', 'font: 42px sans-serif; color: #c9a86a; font-style: italic');
+  console.log('%cbehave. actually don\'t.', 'color:#7a1f2b; font-family: monospace; letter-spacing: .2em');
+</script>
+
+</body>
+</html>
