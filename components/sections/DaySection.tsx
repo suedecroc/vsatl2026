@@ -1,7 +1,6 @@
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import MobileCarousel from "@/components/MobileCarousel";
 import MotionWrapper from "@/components/MotionWrapper";
 
 const inmanPark = [
@@ -303,60 +302,51 @@ const dayItinerary = [
   },
 ];
 
+function NeighborhoodHeader({ label }: { label: string }) {
+  return (
+    <MotionWrapper>
+      <div className="flex items-center gap-4 mb-4 mt-12 first:mt-0">
+        <span className="font-[family-name:var(--font-heading)] text-[11px] tracking-[0.3em] text-dirty-orange uppercase">
+          {label}
+        </span>
+        <span className="flex-1 h-px bg-dirty-orange/20" />
+      </div>
+    </MotionWrapper>
+  );
+}
+
 export default function DaySection() {
   return (
     <>
       {/* ===== 01 — FOOD ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-16">
-          <ChapterIntro
-            eyebrow="01 — The Table"
-            title="Feed Yourself"
-            intro="food organized by area because atlanta sprawls and you need to eat strategically. every spot here earned its place."
-            variant="warm"
-          />
+      <ChapterIntro
+        eyebrow="01 — The Table"
+        title="Feed Yourself"
+        intro="food organized by neighborhood because atlanta sprawls and you need to eat strategically. every spot here earned its place."
+        variant="warm"
+      />
 
-          <div>
-            <MotionWrapper>
-              <h3 className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-dirty-orange uppercase mb-6 neon-glow-orange">
-                Inman Park
-              </h3>
-            </MotionWrapper>
-            <MobileCarousel>
-              {inmanPark.map((spot, i) => (
-                <div key={spot.name} className="min-w-[280px] snap-start md:min-w-0">
-                  <PlaceCard {...spot} delay={i * 80} tagVariant="warm" />
-                </div>
-              ))}
-            </MobileCarousel>
+      <section className="px-6 lg:px-12 pb-16">
+        <div className="max-w-4xl mx-auto">
+          <NeighborhoodHeader label="Inman Park" />
+          <div className="divide-y divide-cream/8">
+            {inmanPark.map((spot, i) => (
+              <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
+            ))}
           </div>
 
-          <div>
-            <MotionWrapper>
-              <h3 className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-dirty-orange uppercase mb-6 neon-glow-orange">
-                Krog Street Market
-              </h3>
-            </MotionWrapper>
-            <MobileCarousel>
-              {krogStreet.map((spot, i) => (
-                <div key={spot.name} className="min-w-[280px] snap-start md:min-w-0">
-                  <PlaceCard {...spot} delay={i * 80} tagVariant="warm" />
-                </div>
-              ))}
-            </MobileCarousel>
+          <NeighborhoodHeader label="Krog Street Market" />
+          <div className="divide-y divide-cream/8">
+            {krogStreet.map((spot, i) => (
+              <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
+            ))}
           </div>
 
-          <div>
-            <MotionWrapper>
-              <h3 className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-dirty-orange uppercase mb-6 neon-glow-orange">
-                Kirkwood
-              </h3>
-            </MotionWrapper>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {kirkwood.map((spot, i) => (
-                <PlaceCard key={spot.name} {...spot} delay={i * 80} tagVariant="warm" />
-              ))}
-            </div>
+          <NeighborhoodHeader label="Kirkwood" />
+          <div className="divide-y divide-cream/8">
+            {kirkwood.map((spot, i) => (
+              <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
+            ))}
           </div>
         </div>
       </section>
@@ -374,48 +364,35 @@ export default function DaySection() {
         variant="warm"
       />
 
-      <section className="py-16 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {daytimeSpots.map((spot, i) => (
-              <PlaceCard key={spot.name} {...spot} delay={i * 80} tagVariant="warm" />
-            ))}
-          </div>
+      <section className="px-6 lg:px-12 pb-16">
+        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+          {daytimeSpots.map((spot, i) => (
+            <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
+          ))}
         </div>
       </section>
 
       {/* ===== 03 — ITINERARY ===== */}
-      <section className="bg-sweat grain py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <MotionWrapper>
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 items-end">
-              <div className="lg:col-span-5">
-                <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-dirty-orange neon-glow-subtle">
-                  03 — The Plan
-                </p>
-                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
-                  Day by Day
-                </h2>
-              </div>
-              <div className="lg:col-span-7 lg:pb-3">
-                <p className="font-[family-name:var(--font-body)] text-base sm:text-lg leading-relaxed text-cream/60">
-                  the daytime itinerary. flexible by design, intentional by nature. adjust as needed. atlanta rewards spontaneity.
-                </p>
-              </div>
-            </div>
-          </MotionWrapper>
-          <div className="space-y-8">
+      <section className="bg-sweat grain py-16 px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <ChapterIntro
+            eyebrow="03 — The Plan"
+            title="Day by Day"
+            intro="the daytime itinerary. flexible by design, intentional by nature. adjust as needed. atlanta rewards spontaneity."
+            variant="warm"
+          />
+          <div className="space-y-6 mt-8">
             {dayItinerary.map((day) => (
               <MotionWrapper key={day.day}>
-                <article className="border border-dirty-orange/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 lg:p-10 hover:border-dirty-orange/40 transition-colors duration-300">
-                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-6 pb-5 border-b border-cream/8">
+                <article className="border border-dirty-orange/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 hover:border-dirty-orange/40 transition-colors duration-300">
+                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-5 pb-4 border-b border-cream/8">
                     <span className="inline-block px-3 py-1 font-[family-name:var(--font-display)] text-xs tracking-widest uppercase bg-dirty-orange text-midnight -skew-x-3">
                       <span className="skew-x-3 inline-block">{day.day}</span>
                     </span>
-                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-xs tracking-[0.25em] uppercase">
+                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-[11px] tracking-[0.25em] uppercase">
                       {day.date}
                     </span>
-                    <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl lg:text-3xl text-cream uppercase tracking-wide ml-auto neon-glow-orange">
+                    <h3 className="font-[family-name:var(--font-display)] text-lg sm:text-xl text-cream uppercase tracking-wide ml-auto">
                       {day.title}
                     </h3>
                   </header>
@@ -425,7 +402,7 @@ export default function DaySection() {
                         key={`${day.day}-${event.time}`}
                         className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-4 first:pt-0 last:pb-0"
                       >
-                        <span className="font-[family-name:var(--font-heading)] text-xs text-dirty-orange/60 tracking-[0.15em] uppercase pt-1">
+                        <span className="font-[family-name:var(--font-heading)] text-[11px] text-dirty-orange/60 tracking-[0.15em] uppercase pt-1">
                           {event.time}
                         </span>
                         <div>
@@ -433,11 +410,11 @@ export default function DaySection() {
                             {event.spot}
                           </p>
                           {event.address && (
-                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5 tracking-wide">
+                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-[11px] mt-0.5 tracking-wide">
                               {event.address}
                             </p>
                           )}
-                          <p className="font-[family-name:var(--font-body)] text-cream/50 text-sm mt-1 leading-relaxed">
+                          <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
                             {event.desc}
                           </p>
                         </div>

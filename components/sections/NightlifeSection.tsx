@@ -1,7 +1,6 @@
 import ChapterIntro from "@/components/ChapterIntro";
 import PlaceCard from "@/components/PlaceCard";
 import QuoteBlock from "@/components/QuoteBlock";
-import MobileCarousel from "@/components/MobileCarousel";
 import MotionWrapper from "@/components/MotionWrapper";
 import StickerButton from "@/components/StickerButton";
 
@@ -215,20 +214,17 @@ export default function NightlifeSection() {
       />
 
       {/* ===== 01 — THE STRIP ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="01 — The Strip"
-            title="Edgewood Avenue"
-            intro="atlanta's bar district. every door a different universe. start anywhere, end up everywhere. the strip doesn't judge."
-          />
-          <MobileCarousel>
-            {edgewoodSpots.map((spot, i) => (
-              <div key={spot.name} className="min-w-[280px] snap-start md:min-w-0">
-                <PlaceCard {...spot} glow delay={i * 80} tagVariant="glow" />
-              </div>
-            ))}
-          </MobileCarousel>
+      <ChapterIntro
+        eyebrow="01 — The Strip"
+        title="Edgewood Avenue"
+        intro="atlanta's bar district. every door a different universe. start anywhere, end up everywhere. the strip doesn't judge."
+      />
+
+      <section className="px-6 lg:px-12 pb-16">
+        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+          {edgewoodSpots.map((spot, i) => (
+            <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
+          ))}
         </div>
       </section>
 
@@ -239,17 +235,15 @@ export default function NightlifeSection() {
         intro="magic city is the non-negotiable. the rest depends on what kind of night you're building. buckhead goes loud. midtown goes louder. you already know which one you're choosing."
       />
 
-      <section className="py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {bigNightSpots.map((spot, i) => (
-              <PlaceCard key={spot.name} {...spot} glow delay={i * 100} tagVariant="glow" />
-            ))}
-          </div>
+      <section className="px-6 lg:px-12 pb-12">
+        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+          {bigNightSpots.map((spot, i) => (
+            <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
+          ))}
         </div>
       </section>
 
-      <section className="py-8 px-6 lg:px-12">
+      <section className="pb-12 px-6 lg:px-12">
         <MotionWrapper delay={200}>
           <div className="flex justify-center">
             <StickerButton label="Find Your Trouble" href="#night-plan" color="purple" />
@@ -258,18 +252,17 @@ export default function NightlifeSection() {
       </section>
 
       {/* ===== 03 — FUEL ===== */}
-      <section className="py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <ChapterIntro
-            eyebrow="03 — Fuel"
-            title="Late Dinner"
-            intro="you're going to need food. before, during, or after. these spots know what time it is."
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {lateDinnerSpots.map((spot, i) => (
-              <PlaceCard key={spot.name} {...spot} delay={i * 80} tagVariant="glow" />
-            ))}
-          </div>
+      <ChapterIntro
+        eyebrow="03 — Fuel"
+        title="Late Dinner"
+        intro="you're going to need food. before, during, or after. these spots know what time it is."
+      />
+
+      <section className="px-6 lg:px-12 pb-16">
+        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+          {lateDinnerSpots.map((spot, i) => (
+            <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
+          ))}
         </div>
       </section>
 
@@ -279,37 +272,25 @@ export default function NightlifeSection() {
       />
 
       {/* ===== 04 — NIGHT BY NIGHT ===== */}
-      <section id="night-plan" className="bg-sweat grain py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <MotionWrapper>
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 items-end">
-              <div className="lg:col-span-5">
-                <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-neon-pink neon-glow-subtle">
-                  04 — The Plan
-                </p>
-                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
-                  Night by Night
-                </h2>
-              </div>
-              <div className="lg:col-span-7 lg:pb-3">
-                <p className="font-[family-name:var(--font-body)] text-base sm:text-lg leading-relaxed text-cream/60">
-                  the after-dark itinerary. each night has its own energy. tuesday warms you up. wednesday is magic city. thursday goes deep east side. friday is the crescendo.
-                </p>
-              </div>
-            </div>
-          </MotionWrapper>
-          <div className="space-y-8">
+      <section id="night-plan" className="bg-sweat grain py-16 px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <ChapterIntro
+            eyebrow="04 — The Plan"
+            title="Night by Night"
+            intro="the after-dark itinerary. each night has its own energy. tuesday warms you up. wednesday is magic city. thursday goes deep east side. friday is the crescendo."
+          />
+          <div className="space-y-6 mt-8">
             {nightItinerary.map((day) => (
               <MotionWrapper key={day.day}>
-                <article className="border border-neon-pink/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 lg:p-10 hover:border-neon-pink/40 transition-colors duration-300">
-                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-6 pb-5 border-b border-cream/8">
+                <article className="border border-neon-pink/20 bg-charcoal/40 rounded-sm p-6 sm:p-8 hover:border-neon-pink/40 transition-colors duration-300">
+                  <header className="flex flex-wrap items-center gap-x-5 gap-y-3 mb-5 pb-4 border-b border-cream/8">
                     <span className="inline-block px-3 py-1 font-[family-name:var(--font-display)] text-xs tracking-widest uppercase bg-neon-pink text-midnight -skew-x-3">
                       <span className="skew-x-3 inline-block">{day.day}</span>
                     </span>
-                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-xs tracking-[0.25em] uppercase">
+                    <span className="font-[family-name:var(--font-heading)] text-cream/40 text-[11px] tracking-[0.25em] uppercase">
                       {day.date}
                     </span>
-                    <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl lg:text-3xl text-cream uppercase tracking-wide ml-auto neon-glow-pink">
+                    <h3 className="font-[family-name:var(--font-display)] text-lg sm:text-xl text-cream uppercase tracking-wide ml-auto">
                       {day.title}
                     </h3>
                   </header>
@@ -319,7 +300,7 @@ export default function NightlifeSection() {
                         key={`${day.day}-${event.time}`}
                         className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-4 first:pt-0 last:pb-0"
                       >
-                        <span className="font-[family-name:var(--font-heading)] text-xs text-neon-pink/60 tracking-[0.15em] uppercase pt-1">
+                        <span className="font-[family-name:var(--font-heading)] text-[11px] text-neon-pink/60 tracking-[0.15em] uppercase pt-1">
                           {event.time}
                         </span>
                         <div>
@@ -327,11 +308,11 @@ export default function NightlifeSection() {
                             {event.spot}
                           </p>
                           {event.address && (
-                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-xs mt-0.5 tracking-wide">
+                            <p className="font-[family-name:var(--font-heading)] text-cream/30 text-[11px] mt-0.5 tracking-wide">
                               {event.address}
                             </p>
                           )}
-                          <p className="font-[family-name:var(--font-body)] text-cream/50 text-sm mt-1 leading-relaxed">
+                          <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
                             {event.desc}
                           </p>
                         </div>

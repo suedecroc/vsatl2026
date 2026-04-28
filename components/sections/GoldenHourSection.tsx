@@ -108,13 +108,11 @@ export default function GoldenHourSection() {
         variant="warm"
       />
 
-      <section className="py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sunsetSpots.map((spot, i) => (
-              <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
-            ))}
-          </div>
+      <section className="px-6 lg:px-12 pb-16">
+        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+          {sunsetSpots.map((spot, i) => (
+            <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
+          ))}
         </div>
       </section>
 
@@ -130,62 +128,41 @@ export default function GoldenHourSection() {
         variant="warm"
       />
 
-      <section className="py-12 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {transitionSpots.map((spot, i) => (
-              <PlaceCard key={spot.name} {...spot} delay={i * 100} tagVariant="warm" />
-            ))}
-          </div>
+      <section className="px-6 lg:px-12 pb-16">
+        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+          {transitionSpots.map((spot, i) => (
+            <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
+          ))}
         </div>
       </section>
 
       {/* ===== 03 — THE FLOW ===== */}
-      <section className="bg-sweat grain py-24 px-6 lg:px-12">
-        <div className="max-w-7xl mx-auto">
-          <MotionWrapper>
-            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 mb-16 items-end">
-              <div className="lg:col-span-5">
-                <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] uppercase mb-4 text-dirty-orange neon-glow-subtle">
-                  03 — The Flow
-                </p>
-                <h2 className="font-[family-name:var(--font-display)] text-[clamp(2rem,8vw,5rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle">
-                  How the Evening Builds
-                </h2>
-              </div>
-              <div className="lg:col-span-7 lg:pb-3">
-                <p className="font-[family-name:var(--font-body)] text-base sm:text-lg leading-relaxed text-cream/60">
-                  golden hour has a rhythm. you don&apos;t force it. you let it carry you from rooftop to beltline to patio to dinner. the city does the work.
-                </p>
-              </div>
-            </div>
-          </MotionWrapper>
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
-            <div className="lg:col-span-4 lg:border-l-2 lg:border-dirty-orange/20 lg:pl-8 hidden lg:block">
-              <p className="font-[family-name:var(--font-heading)] text-xs tracking-[0.3em] text-dirty-orange/60 uppercase mb-3">timeline</p>
-              <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm leading-relaxed">
-                five hours, five moves. each one a different temperature.
-              </p>
-            </div>
-            <div className="lg:col-span-8 space-y-6">
-              {goldenItinerary.map((event, i) => (
-                <MotionWrapper key={event.time} delay={i * 80}>
-                  <div className="flex gap-4">
-                    <span className="font-[family-name:var(--font-heading)] text-xs text-sunburnt-yellow/40 tracking-wide min-w-[70px] sm:min-w-[90px] pt-1 shrink-0">
-                      {event.time}
-                    </span>
-                    <div>
-                      <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
-                        {event.spot}
-                      </p>
-                      <p className="font-[family-name:var(--font-body)] text-cream/40 text-sm mt-1">
-                        {event.desc}
-                      </p>
-                    </div>
+      <section className="bg-sweat grain py-16 px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto">
+          <ChapterIntro
+            eyebrow="03 — The Flow"
+            title="How the Evening Builds"
+            intro="golden hour has a rhythm. you don&rsquo;t force it. you let it carry you from rooftop to beltline to patio to dinner. the city does the work."
+            variant="warm"
+          />
+          <div className="divide-y divide-cream/5 mt-4">
+            {goldenItinerary.map((event, i) => (
+              <MotionWrapper key={event.time} delay={i * 60}>
+                <div className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-5">
+                  <span className="font-[family-name:var(--font-heading)] text-[11px] text-dirty-orange/70 tracking-[0.15em] uppercase pt-1">
+                    {event.time}
+                  </span>
+                  <div>
+                    <p className="font-[family-name:var(--font-body)] text-cream text-sm sm:text-base font-medium">
+                      {event.spot}
+                    </p>
+                    <p className="font-[family-name:var(--font-body)] text-cream/55 text-sm mt-1 leading-relaxed">
+                      {event.desc}
+                    </p>
                   </div>
-                </MotionWrapper>
-              ))}
-            </div>
+                </div>
+              </MotionWrapper>
+            ))}
           </div>
         </div>
       </section>
