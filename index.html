@@ -329,6 +329,31 @@ body::before{
   color:var(--gold);margin-top:10px;
 }
 
+/* maps + website / instagram link rows on cards and belt tiles */
+.card .links{
+  margin-top:14px;display:flex;gap:18px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream-ghost);position:relative;z-index:2;
+}
+.card .links a{
+  color:var(--cream-ghost);
+  border-bottom:1px solid transparent;padding-bottom:1px;
+  transition:color .2s ease, border-color .2s ease;
+}
+.card .links a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+.belt-tile .spot-links{
+  margin-top:10px;display:flex;gap:16px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream-ghost);
+}
+.belt-tile .spot-links a{
+  color:var(--cream-ghost);
+  border-bottom:1px solid transparent;padding-bottom:1px;
+  transition:color .2s ease, border-color .2s ease;
+}
+.belt-tile .spot-links a:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
 /* feature card (magic city) */
 .card.feature{
   aspect-ratio: auto;
@@ -681,6 +706,10 @@ body::before{
         <p>tiled banquettes, natural wine, the bavette everyone pretends to discover for the first time. sit at the counter if you can, linger like rent is free.</p>
         <div class="order">order — bavette · gem salad · second bottle</div>
       </div>
+      <div class="links">
+        <a href="https://www.bread-and-butterfly.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Bread+%26+Butterfly,+290+Elizabeth+St+NE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </article>
 
     <article class="card r" tabindex="0">
@@ -692,6 +721,10 @@ body::before{
       <div class="reveal">
         <p>still the quietest flex in the city. the tasting menu pays off every dollar. anniversary-grade without the anniversary energy.</p>
         <div class="order">reserve — six weeks out, minimum</div>
+      </div>
+      <div class="links">
+        <a href="https://www.staplehouse.com" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Staplehouse,+541+Edgewood+Ave+SE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
       </div>
     </article>
 
@@ -705,6 +738,10 @@ body::before{
         <p>hands-on feast on banana leaves. messy, communal, impossible to do sadly. worth the drive up buford highway — which is the real dining district anyway.</p>
         <div class="order">order — the full boodle / bring an appetite</div>
       </div>
+      <div class="links">
+        <a href="https://kamayanatl.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Kamayan+ATL,+5150+Buford+Hwy+NE,+doraville,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </article>
 
     <article class="card r" tabindex="0">
@@ -716,6 +753,10 @@ body::before{
       <div class="reveal">
         <p>the farm-egg in celery cream is worth crossing the connector. go early, sit at the kitchen counter, order everything with butter in the name.</p>
         <div class="order">order — farm egg · biscuits · whatever's on the board</div>
+      </div>
+      <div class="links">
+        <a href="https://www.millerunion.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Miller+Union,+999+Brady+Ave+NW,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
       </div>
     </article>
 
@@ -729,6 +770,10 @@ body::before{
         <p>cocktail bar pretending to be a supper club pretending to be a yacht club. order the ticonderoga cup and a plate of whatever's on special. don't rush it.</p>
         <div class="order">order — ticonderoga cup · oysters · rye toast</div>
       </div>
+      <div class="links">
+        <a href="https://www.ticonderogaclub.com" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Ticonderoga+Club,+99+Krog+St+NE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </article>
 
     <article class="card r" tabindex="0">
@@ -740,6 +785,26 @@ body::before{
       <div class="reveal">
         <p>the comfy chicken biscuit. no notes. get there before 10 or accept the line as part of the process.</p>
         <div class="order">order — comfy chicken · side of grits · black coffee</div>
+      </div>
+      <div class="links">
+        <a href="https://www.homegrownga.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Home+Grown,+968+Memorial+Dr+SE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
+    </article>
+
+    <article class="card r" tabindex="0">
+      <div class="swatch" style="background:linear-gradient(150deg,#101a22,#0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ raw bar · ice + lemon ]</span>
+      <span class="num">02.07</span>
+      <h4>beetle<em>cat</em></h4>
+      <div class="meta"><span>inman park</span><span>seafood</span><span>$$$</span></div>
+      <div class="reveal">
+        <p>upscale seafood with a 70s surf-shack den downstairs. two patios, a lobster roll the city won't shut up about, and a den below for the second drink. reserve.</p>
+        <div class="order">order — lobster roll · oysters · second round at the den</div>
+      </div>
+      <div class="links">
+        <a href="https://beetlecatatl.com" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Beetlecat,+299+N+Highland+Ave+NE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
       </div>
     </article>
   </div>
@@ -767,53 +832,57 @@ body::before{
         <p style="max-width:52ch">the institution. monday night magic is the correct answer — monday's the industry night, the room is its best self, the hip-hop is loud and right. arrive by 11, tip the man at the door, sit where you can see the whole floor. leave before you want to.</p>
         <div class="order">rule — respect the room, it's been here longer than you</div>
       </div>
-    </article>
-
-    <article class="card r" tabindex="0">
-      <div class="swatch" style="background:linear-gradient(160deg,#2c1a1e,#0a0a0a 70%)"></div>
-      <span class="placeholder-tag">[ patio · string lights ]</span>
-      <span class="num">03.02</span>
-      <h4>the <em>lawrence</em></h4>
-      <div class="meta"><span>midtown</span><span>cocktails</span><span>pre-dinner</span></div>
-      <div class="reveal">
-        <p>reliable start to any night. order a martini like you mean it and let the bartender cook.</p>
-        <div class="order">order — martini · whatever they push back</div>
+      <div class="links">
+        <a href="https://www.magiccity.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Magic+City,+241+Forsyth+St+SW,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
       </div>
     </article>
 
     <article class="card r" tabindex="0">
-      <div class="swatch" style="background:radial-gradient(circle at 50% 50%, #2a1c12, #0a0a0a 70%)"></div>
-      <span class="placeholder-tag">[ booth · velvet ]</span>
-      <span class="num">03.03</span>
-      <h4>dear, <em>margaret</em></h4>
-      <div class="meta"><span>reynoldstown</span><span>wine bar</span><span>late</span></div>
+      <div class="swatch" style="background:linear-gradient(160deg,#2c1a1e,#0a0a0a 70%)"></div>
+      <span class="placeholder-tag">[ vinyl · room glow ]</span>
+      <span class="num">03.02</span>
+      <h4>pisces <em>atl</em></h4>
+      <div class="meta"><span>edgewood</span><span>vinyl + tacos</span><span>10p+</span></div>
       <div class="reveal">
-        <p>appalachian wine bar that happens to make the best late-night food on the east side. run the list with whoever's pouring.</p>
-        <div class="order">order — chef's pick · natural red · stay</div>
+        <p>ree de la vega's spot in the old sound table room. two floors — vinyl spinning upstairs, dance floor below. tacos and small plates while you wait. 21+, wed–sat till 3am.</p>
+        <div class="order">rule — wed–sat only · 21+ · come for the music</div>
+      </div>
+      <div class="links">
+        <a href="https://www.instagram.com/pisces.atl/" target="_blank" rel="noopener">instagram ↗</a>
+        <a href="https://maps.google.com/?q=Pisces,+483+Edgewood+Ave+SE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
       </div>
     </article>
 
     <article class="card r" tabindex="0">
       <div class="swatch" style="background:linear-gradient(140deg,#1a1222,#0a0a0a 70%)"></div>
       <span class="placeholder-tag">[ floor · blurred motion ]</span>
-      <span class="num">03.04</span>
+      <span class="num">03.03</span>
       <h4>MJQ <em>concourse</em></h4>
       <div class="meta"><span>ponce</span><span>dance</span><span>late late</span></div>
       <div class="reveal">
         <p>basement. sweat. no pictures. if you have to ask what to wear you're already late.</p>
         <div class="order">rule — cash · no laptops · be cool</div>
       </div>
+      <div class="links">
+        <a href="https://www.mjqofficial.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=MJQ+Concourse,+50+Lower+Alabama+St,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </article>
 
     <article class="card r" tabindex="0">
       <div class="swatch" style="background:radial-gradient(ellipse at 30% 20%, #2a1420, #0a0a0a 70%)"></div>
       <span class="placeholder-tag">[ tables · amber low ]</span>
-      <span class="num">03.05</span>
+      <span class="num">03.04</span>
       <h4>el <em>malo</em></h4>
       <div class="meta"><span>grant park</span><span>tacos + mezcal</span><span>10p+</span></div>
       <div class="reveal">
         <p>second-floor patio, mezcal list that takes itself seriously, the al pastor is church. late-night pivot that feels like a secret even though it isn't.</p>
         <div class="order">order — al pastor · derecho mezcal · second round</div>
+      </div>
+      <div class="links">
+        <a href="https://elmaloatl.com/" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=El+Malo,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
       </div>
     </article>
   </div>
@@ -901,30 +970,49 @@ body::before{
       <div class="head"><span>05.01 · the spine</span><span class="time">all day</span></div>
       <h5>eastside trail, <em>ponce to reynoldstown</em></h5>
       <p>start at krog street market, walk south. ping-pong tables, murals that change every season, ponce city market on your right if you want to lose an hour. the correct pace is slow.</p>
+      <div class="spot-links">
+        <a href="https://beltline.org" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Atlanta+Beltline+Eastside+Trail,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </div>
 
     <div class="belt-tile r">
       <div class="head"><span>05.02</span><span class="time">1 hr</span></div>
       <h5>krog <em>tunnel</em></h5>
       <p>the graffiti is the city. bring a film camera if you have one.</p>
+      <div class="spot-links">
+        <a href="https://maps.google.com/?q=Krog+Street+Tunnel,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </div>
 
     <div class="belt-tile r">
       <div class="head"><span>05.03</span><span class="time">90 min</span></div>
       <h5>ponce <em>city market</em></h5>
       <p>skip the food hall unless you need the bathroom. the rooftop is the move.</p>
+      <div class="spot-links">
+        <a href="https://poncecitymarket.com" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Ponce+City+Market,+675+Ponce+de+Leon+Ave+NE,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </div>
 
     <div class="belt-tile r">
       <div class="head"><span>05.04</span><span class="time">2 hr</span></div>
       <h5>piedmont <em>park</em></h5>
       <p>blanket. speaker low. skyline from the oak hill. sunday behavior.</p>
+      <div class="spot-links">
+        <a href="https://piedmontpark.org" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Piedmont+Park,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </div>
 
     <div class="belt-tile r">
       <div class="head"><span>05.05</span><span class="time">morning</span></div>
       <h5>oakland <em>cemetery</em></h5>
       <p>quieter than it sounds. sunrise walk, then coffee at six feet under across the street. pay respects on maynard's stone.</p>
+      <div class="spot-links">
+        <a href="https://oaklandcemetery.com" target="_blank" rel="noopener">website ↗</a>
+        <a href="https://maps.google.com/?q=Oakland+Cemetery,+atlanta,+ga" target="_blank" rel="noopener">maps ↗</a>
+      </div>
     </div>
 
     <div class="belt-tile r">
