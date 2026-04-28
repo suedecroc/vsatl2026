@@ -221,7 +221,7 @@ export default function NightlifeSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
           {edgewoodSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
           ))}
@@ -236,7 +236,7 @@ export default function NightlifeSection() {
       />
 
       <section className="px-6 lg:px-12 pb-12">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
           {bigNightSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
           ))}
@@ -259,7 +259,7 @@ export default function NightlifeSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
           {lateDinnerSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
           ))}
@@ -273,7 +273,7 @@ export default function NightlifeSection() {
 
       {/* ===== 04 — NIGHT BY NIGHT ===== */}
       <section id="night-plan" className="bg-sweat grain py-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <ChapterIntro
             eyebrow="04 — The Plan"
             title="Night by Night"

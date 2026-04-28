@@ -120,7 +120,7 @@ export default function AfterHoursSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
           {lateNightFood.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="glow" />
           ))}
@@ -129,7 +129,7 @@ export default function AfterHoursSection() {
 
       {/* ===== 02 — THE REAL SCHEDULE ===== */}
       <section className="bg-sweat grain py-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <ChapterIntro
             eyebrow="02 — The Real Schedule"
             title="How the Night Actually Goes"
@@ -177,7 +177,7 @@ export default function AfterHoursSection() {
         intro="saturday. you made it. everything hurts but nothing is broken. time to eat brunch like you earned it, because you did."
       />
       <section className="pb-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/5">
+        <div className="max-w-5xl mx-auto divide-y divide-cream/5">
           {saturdayWindDown.map((event, i) => (
             <MotionWrapper key={event.time} delay={i * 60}>
               <div className="grid grid-cols-1 sm:grid-cols-[110px_1fr] gap-1 sm:gap-8 py-5">

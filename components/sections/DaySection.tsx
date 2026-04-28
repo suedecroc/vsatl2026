@@ -327,7 +327,7 @@ export default function DaySection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <NeighborhoodHeader label="Inman Park" />
           <div className="divide-y divide-cream/8">
             {inmanPark.map((spot, i) => (
@@ -374,7 +374,7 @@ export default function DaySection() {
 
       {/* ===== 03 — ITINERARY ===== */}
       <section className="bg-sweat grain py-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <ChapterIntro
             eyebrow="03 — The Plan"
             title="Day by Day"

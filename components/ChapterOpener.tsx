@@ -44,7 +44,7 @@ export default function ChapterOpener({
   return (
     <section
       id={id}
-      className="relative min-h-[90vh] flex items-center px-6 sm:px-10 lg:px-12 py-20 lg:py-28 grain scroll-mt-24"
+      className="relative min-h-[80vh] flex items-center px-6 sm:px-10 lg:px-12 py-20 lg:py-28 grain scroll-mt-24"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -52,7 +52,7 @@ export default function ChapterOpener({
           <div className="lg:col-span-4">
             <MotionWrapper>
               <p
-                className={`font-[family-name:var(--font-display)] text-[clamp(7rem,20vw,18rem)] leading-[0.85] tracking-tight tabular-nums ${accentTextClass[accent]} neon-glow-subtle`}
+                className={`font-[family-name:var(--font-display)] text-[clamp(6rem,16vw,14rem)] leading-[0.85] tracking-tight tabular-nums ${accentTextClass[accent]} neon-glow-subtle`}
               >
                 {number}
               </p>
@@ -60,7 +60,7 @@ export default function ChapterOpener({
           </div>
 
           {/* Title + intro */}
-          <div className="lg:col-span-8 lg:pl-8 lg:border-l lg:border-cream/10">
+          <div className="lg:col-span-8 lg:pl-8 lg:border-l lg:border-cream/10 min-w-0">
             <MotionWrapper delay={100}>
               <p
                 className={`font-[family-name:var(--font-heading)] text-[11px] sm:text-xs tracking-[0.4em] uppercase mb-6 ${accentTextClass[accent]} neon-glow-subtle`}
@@ -78,7 +78,7 @@ export default function ChapterOpener({
             )}
 
             <MotionWrapper delay={200}>
-              <h2 className="font-[family-name:var(--font-display)] text-[clamp(3rem,10vw,8rem)] leading-[0.85] tracking-tight uppercase text-cream neon-glow-subtle">
+              <h2 className="font-[family-name:var(--font-display)] text-[clamp(3rem,8vw,7rem)] leading-[0.9] tracking-tight uppercase text-cream neon-glow-subtle break-words">
                 {title}
               </h2>
             </MotionWrapper>

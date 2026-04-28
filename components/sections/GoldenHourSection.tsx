@@ -109,7 +109,7 @@ export default function GoldenHourSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
           {sunsetSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
           ))}
@@ -129,7 +129,7 @@ export default function GoldenHourSection() {
       />
 
       <section className="px-6 lg:px-12 pb-16">
-        <div className="max-w-4xl mx-auto divide-y divide-cream/8">
+        <div className="max-w-6xl mx-auto divide-y divide-cream/8">
           {transitionSpots.map((spot, i) => (
             <PlaceCard key={spot.name} {...spot} delay={i * 60} tagVariant="warm" />
           ))}
@@ -138,7 +138,7 @@ export default function GoldenHourSection() {
 
       {/* ===== 03 — THE FLOW ===== */}
       <section className="bg-sweat grain py-16 px-6 lg:px-12">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <ChapterIntro
             eyebrow="03 — The Flow"
             title="How the Evening Builds"

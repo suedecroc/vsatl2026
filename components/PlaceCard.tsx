@@ -32,63 +32,63 @@ export default function PlaceCard({
 
   return (
     <MotionWrapper delay={delay}>
-      <article className="py-5 sm:py-6 group">
-        {/* Top row — name on left, tags + links on right */}
-        <div className="flex flex-wrap items-baseline gap-x-5 gap-y-2 mb-2">
-          <h3 className="font-[family-name:var(--font-display)] text-lg sm:text-xl tracking-wide uppercase text-cream">
+      <article className="lg:grid lg:grid-cols-12 lg:gap-12 py-8 sm:py-10 group">
+        {/* LEFT — name / address / tags */}
+        <div className="lg:col-span-4 mb-3 lg:mb-0">
+          <h3 className="font-[family-name:var(--font-display)] text-xl sm:text-2xl tracking-wide uppercase text-cream leading-tight">
             {name}
           </h3>
           {address && (
-            <span className="font-[family-name:var(--font-heading)] text-[11px] text-cream/40 tracking-wide">
+            <p className="font-[family-name:var(--font-heading)] text-[11px] text-cream/40 tracking-wide mt-1.5">
               {address}
-            </span>
+            </p>
           )}
           {tags.length > 0 && (
-            <span className="font-[family-name:var(--font-heading)] text-[10px] text-cream/30 tracking-[0.18em] uppercase sm:ml-auto">
+            <p className="font-[family-name:var(--font-heading)] text-[10px] text-cream/30 tracking-[0.18em] uppercase mt-3">
               {tags.join(" · ")}
-            </span>
+            </p>
           )}
         </div>
 
-        {/* Description */}
-        {description && (
-          <p className="font-[family-name:var(--font-body)] text-sm sm:text-[15px] text-cream/65 leading-relaxed">
-            {description}
-          </p>
-        )}
+        {/* RIGHT — description / must order / links */}
+        <div className="lg:col-span-8">
+          {description && (
+            <p className="font-[family-name:var(--font-body)] text-sm sm:text-[15px] text-cream/65 leading-relaxed">
+              {description}
+            </p>
+          )}
 
-        {/* Must order */}
-        {mustOrder && (
-          <p className={`font-[family-name:var(--font-heading)] text-[11px] tracking-wide italic mt-2 ${accentColor}`}>
-            must order: {mustOrder}
-          </p>
-        )}
+          {mustOrder && (
+            <p className={`font-[family-name:var(--font-heading)] text-[11px] tracking-wide italic mt-3 ${accentColor}`}>
+              must order: {mustOrder}
+            </p>
+          )}
 
-        {/* Links */}
-        {(website || mapUrl) && (
-          <div className="flex gap-5 mt-3">
-            {website && (
-              <a
-                href={website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`font-[family-name:var(--font-heading)] text-[10px] tracking-[0.2em] uppercase text-cream/40 ${accentHover} transition-colors`}
-              >
-                website ↗
-              </a>
-            )}
-            {mapUrl && (
-              <a
-                href={mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`font-[family-name:var(--font-heading)] text-[10px] tracking-[0.2em] uppercase text-cream/40 ${accentHover} transition-colors`}
-              >
-                maps ↗
-              </a>
-            )}
-          </div>
-        )}
+          {(website || mapUrl) && (
+            <div className="flex gap-6 mt-4">
+              {website && (
+                <a
+                  href={website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`font-[family-name:var(--font-heading)] text-[10px] tracking-[0.2em] uppercase text-cream/40 ${accentHover} transition-colors`}
+                >
+                  website ↗
+                </a>
+              )}
+              {mapUrl && (
+                <a
+                  href={mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`font-[family-name:var(--font-heading)] text-[10px] tracking-[0.2em] uppercase text-cream/40 ${accentHover} transition-colors`}
+                >
+                  maps ↗
+                </a>
+              )}
+            </div>
+          )}
+        </div>
       </article>
     </MotionWrapper>
   );
